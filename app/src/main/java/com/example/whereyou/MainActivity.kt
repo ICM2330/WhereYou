@@ -1,9 +1,9 @@
 package com.example.whereyou
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.example.whereyou.databinding.ActivityLoginBinding
 import com.example.whereyou.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,8 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         val handler = Handler()
         handler.postDelayed({
-            val binding = ActivityLoginBinding.inflate(layoutInflater)
-            setContentView(binding.root)
+            startActivity(Intent(baseContext, LoginActivity::class.java))
         }, 3000)
     }
 }
