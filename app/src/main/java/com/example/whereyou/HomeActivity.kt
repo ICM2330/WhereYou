@@ -34,7 +34,8 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.HAChats.setOnClickListener {
-            //startActivity(Intent(baseContext,ChatsActivity::class.java))
+            val  intent = Intent(baseContext,ChatsActivity::class.java)
+            startActivity(intent)
         }
 
         binding.HAHome.setOnClickListener {
