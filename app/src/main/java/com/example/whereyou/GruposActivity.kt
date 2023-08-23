@@ -27,7 +27,7 @@ class GruposActivity : AppCompatActivity() {
         }
 
         binding.GANuevoContacto.setOnClickListener {
-
+			//startActivity(Intent(baseContext,CrearGrupoActivity::class.java))
         }
 
         binding.GAGrupos.setOnClickListener {
