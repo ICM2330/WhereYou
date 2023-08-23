@@ -1,31 +1,25 @@
 package com.example.whereyou
 
 import android.content.Intent
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.whereyou.databinding.ActivityHomeBinding
+import android.os.Bundle
+import com.example.whereyou.databinding.ActivityMapaGrupoBinding
 
-private lateinit var binding : ActivityHomeBinding
-class HomeActivity : AppCompatActivity() {
+class MapaGrupoActivity : AppCompatActivity() {
+    private lateinit var binding : ActivityMapaGrupoBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
+        binding = ActivityMapaGrupoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-		
-		binding.HABorrar.setOnClickListener {
-            binding.HABusquedaUbicacion.setText("")
-        }
-
-        binding.HAOpciones.setOnClickListener {
-
-        }
-
-        binding.HAMicrofono.setOnClickListener {
-
-        }
 
         binding.HAUbicacion.setOnClickListener {
-            
+            if(binding.HAUbicacion.isActivated){
+                //Encender ubicacion
+            }
+        }
+
+        binding.chats.setOnClickListener{
+           // startActivity(Intent(baseContext, ChatsActivity::class.java))
         }
 
         binding.HAGrupos.setOnClickListener {
@@ -34,8 +28,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.HAChats.setOnClickListener {
-            val  intent = Intent(baseContext,ChatsActivity::class.java)
-            startActivity(intent)
+          //  startActivity(Intent(baseContext,ChatsActivity::class.java))
         }
 
         binding.HAHome.setOnClickListener {
@@ -49,7 +42,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.HAPerfil.setOnClickListener {
-            //startActivity(Intent(baseContext,PerfilActivity::class.java))
+         //   startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
     }
 }
