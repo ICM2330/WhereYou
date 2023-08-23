@@ -1,6 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:translationY="20dp">
+
+        <ImageButton
+            android:id="@+id/HA_opciones"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:backgroundTint="#07BDB7"
+            android:src="@drawable/baseline_view_headline_24" />
+
+        <EditText
+            android:id="@+id/HA_busquedaUbicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="bottom|center|start"
+            android:inputType="text"
+            android:text="Ubicación" />
+
+        <ImageButton
+            android:id="@+id/HA_borrar"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:backgroundTint="#07BDB7"
+            android:src="@drawable/baseline_close_24" />
+
+        <ImageButton
+            android:id="@+id/HA_microfono"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:backgroundTint="#07BDB7"
+            android:src="@drawable/baseline_mic_24" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="411dp"
+        android:layout_height="564dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        app:srcCompat="@drawable/mapagps" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:rotationY="0"
+        android:translationY="250dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/HA_ubicacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ubicación Actual"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/HA_direccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cra. 7 #40-62"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/HA_ubicacionActual"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="#07BDB7"
+            android:src="@drawable/baseline_my_location_24" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/HA_barraPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/HA_grupos"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:backgroundTint="#07BDB7"
+                android:src="@drawable/baseline_groups_24" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Grupos" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/HA_chats"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#07BDB7"
+                android:src="@drawable/baseline_chat_24" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Chats" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/HA_home"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#07BDB7"
+                android:src="@drawable/baseline_home_24" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="HOME" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/HA_alertas"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#07BDB7"
+                android:src="@drawable/baseline_notifications_24" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Alertas" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/HA_Perfil"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#07BDB7"
+                android:src="@drawable/baseline_person_24" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Perfil" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
