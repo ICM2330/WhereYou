@@ -2,6 +2,7 @@ package com.example.whereyou
 
 import AdaptadorContactos
 import android.R
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -28,5 +29,40 @@ class CrearGrupoActivity : AppCompatActivity() {
 
         val adapter = AdaptadorContactos(this, contacts)
         binding.listaContactos.adapter = adapter
+
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                com.example.whereyou.R.id.grupos -> {
+                    // Acción cuando se selecciona el elemento "Grupos"
+
+                    var intent = Intent(baseContext, GruposActivity::class.java)
+                    startActivity(intent)
+
+                    true
+                }
+                com.example.whereyou.R.id.chats -> {
+                    // Acción cuando se selecciona el elemento "Chats"
+                    true
+                }
+                com.example.whereyou.R.id.home -> {
+                    // Acción cuando se selecciona el elemento "Home"
+                    var intent = Intent(baseContext, HomeActivity::class.java)
+                    startActivity(intent)
+
+                    true
+                }
+                com.example.whereyou.R.id.alertas -> {
+                    // Acción cuando se selecciona el elemento "Alertas"
+                    var intent = Intent(baseContext, NotificacionesActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                com.example.whereyou.R.id.perfil -> {
+                    // Acción cuando se selecciona el elemento "Perfil"
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }
