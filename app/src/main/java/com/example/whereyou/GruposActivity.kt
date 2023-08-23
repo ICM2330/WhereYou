@@ -18,6 +18,8 @@ class GruposActivity : AppCompatActivity() {
         var adapter = ArrayAdapter<String>(baseContext,android.R.layout.simple_list_item_1,array)
         binding.GAListaGrupos.adapter = adapter
 
+        binding.GAListaGrupos.setOnItemClickListener { adapterView, view, i, l -> startActivity(Intent(baseContext,GruposActivity::class.java))}
+
         binding.GAOpciones.setOnClickListener {
 
         }
