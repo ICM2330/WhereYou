@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.whereyou.databinding.ActivityHomeBinding
 
+private lateinit var binding : ActivityHomeBinding
 class HomeActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -29,7 +29,8 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.HAGrupos.setOnClickListener {
-            startActivity(Intent(baseContext,GruposActivity::class.java))
+            var intent = Intent(baseContext, GruposActivity::class.java)
+            startActivity(intent)
         }
 
         binding.HAChats.setOnClickListener {
@@ -37,11 +38,13 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.HAHome.setOnClickListener {
-            startActivity(Intent(baseContext,HomeActivity::class.java))
+            var intent = Intent(baseContext, HomeActivity::class.java)
+            startActivity(intent)
         }
 
         binding.HAAlertas.setOnClickListener {
-            //startActivity(Intent(baseContext,AlertasActivity::class.java))
+            var intent = Intent(baseContext, NotificacionesActivity::class.java)
+            startActivity(intent)
         }
 
         binding.HAPerfil.setOnClickListener {
