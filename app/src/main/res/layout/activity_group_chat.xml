@@ -6,61 +6,99 @@
     android:layout_height="match_parent"
     android:layout_margin="5dp">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="500dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnhome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchbar" />
+
     <ImageButton
         android:id="@+id/chats"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:text="Chats"
+        android:textSize="6sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnhome"
         app:layout_constraintStart_toEndOf="@+id/groups"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerView"
         android:layout_marginHorizontal="5dp"
         app:srcCompat="@drawable/chats"/>
 
     <ImageButton
         android:id="@+id/btnhome"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:text="Home"
+        android:textSize="6sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/alerts"
         app:layout_constraintStart_toEndOf="@+id/chats"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerView"
         android:layout_marginHorizontal="5dp"
         app:srcCompat="@drawable/home"/>
 
     <ImageButton
         android:id="@+id/alerts"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:text="Alertas"
+        android:textSize="6sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/profile"
         app:layout_constraintStart_toEndOf="@+id/btnhome"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerView"
         android:layout_marginHorizontal="5dp"
         app:srcCompat="@drawable/notification"/>
 
     <ImageButton
         android:id="@+id/profile"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:text="Perfil"
+        android:textSize="6sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/alerts"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerView"
         android:layout_marginHorizontal="5dp"
         app:srcCompat="@drawable/user"/>
 
     <ImageButton
         android:id="@+id/groups"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:text="Grupos"
         android:textSize="6sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/chats"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerView"
         android:layout_marginHorizontal="5dp"
         app:srcCompat="@drawable/groups"/>
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:tooltipText="Chats Grupales"
+        app:titleTextColor="@color/white"
+        android:background="@color/primary"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@id/searchbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchbar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
