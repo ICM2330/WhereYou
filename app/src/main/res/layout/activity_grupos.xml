@@ -1,107 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".GruposActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
-        android:translationY="20dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/HA_opciones"
-            android:layout_width="wrap_content"
+            android:id="@+id/GA_opciones"
+            android:layout_width="80dp"
             android:layout_height="60dp"
-            android:layout_weight="1"
-            android:backgroundTint="#07BDB7"
+            android:layout_weight="2"
+            android:backgroundTint="#07BCB6"
             android:src="@drawable/baseline_view_headline_24" />
 
-        <EditText
-            android:id="@+id/HA_busquedaUbicacion"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:ems="10"
-            android:gravity="bottom|center|start"
-            android:inputType="text"
-            android:text="Ubicación" />
-
-        <ImageButton
-            android:id="@+id/HA_borrar"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:backgroundTint="#07BDB7"
-            android:src="@drawable/baseline_close_24" />
-
-        <ImageButton
-            android:id="@+id/HA_microfono"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:backgroundTint="#07BDB7"
-            android:src="@drawable/baseline_mic_24" />
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:text="GRUPOS"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="411dp"
-        android:layout_height="564dp"
-        android:layout_gravity="center_horizontal|center_vertical"
-        app:srcCompat="@drawable/mapagps" />
+    <ImageButton
+        android:id="@+id/GA_informacion"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="170dp"
+        android:layout_weight="1"
+        android:backgroundTint="#07BDB7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_info_24" />
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/GA_buscador"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Nombre de grupo o persona"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <ListView
+        android:id="@+id/GA_listaGrupos"
+        android:layout_width="406dp"
+        android:layout_height="454dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GA_buscador" />
+
+    <ImageButton
+        android:id="@+id/GA_nuevoContacto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:rotationY="0"
-        android:translationY="250dp">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/HA_ubicacion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ubicación Actual"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/HA_direccion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cra. 7 #40-62"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/HA_ubicacionActual"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:backgroundTint="#07BDB7"
-            android:src="@drawable/baseline_my_location_24" />
-
-    </LinearLayout>
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GA_listaGrupos"
+        app:srcCompat="@drawable/baseline_plus_one_24" />
 
     <LinearLayout
-        android:id="@+id/HA_barraPrincipal"
+        android:id="@+id/GA_barraPrincipal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="168dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -110,7 +90,7 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/HA_grupos"
+                android:id="@+id/GA_grupos"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_weight="1"
@@ -133,7 +113,7 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/HA_chats"
+                android:id="@+id/GA_chats"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:backgroundTint="#07BDB7"
@@ -154,7 +134,7 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/HA_home"
+                android:id="@+id/GA_home"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:backgroundTint="#07BDB7"
@@ -175,7 +155,7 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/HA_alertas"
+                android:id="@+id/GA_alertas"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:backgroundTint="#07BDB7"
@@ -196,7 +176,7 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/HA_Perfil"
+                android:id="@+id/GA_perfil"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:backgroundTint="#07BDB7"
@@ -211,4 +191,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
