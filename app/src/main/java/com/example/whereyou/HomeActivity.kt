@@ -11,13 +11,41 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.groups.setOnClickListener {
-            startActivity(Intent(baseContext, GroupChatActivity::class.java))
+		
+		binding.HABorrar.setOnClickListener {
+            binding.HABusquedaUbicacion.setText("")
         }
 
-        binding.btnhome.setOnClickListener{
-            startActivity(Intent(baseContext, HomeActivity::class.java))
+        binding.HAOpciones.setOnClickListener {
+
+        }
+
+        binding.HAMicrofono.setOnClickListener {
+
+        }
+
+        binding.HAUbicacion.setOnClickListener {
+            
+        }
+
+        binding.HAGrupos.setOnClickListener {
+            startActivity(Intent(baseContext,GruposActivity::class.java))
+        }
+
+        binding.HAChats.setOnClickListener {
+            //startActivity(Intent(baseContext,ChatsActivity::class.java))
+        }
+
+        binding.HAHome.setOnClickListener {
+            startActivity(Intent(baseContext,HomeActivity::class.java))
+        }
+
+        binding.HAAlertas.setOnClickListener {
+            //startActivity(Intent(baseContext,AlertasActivity::class.java))
+        }
+
+        binding.HAPerfil.setOnClickListener {
+            //startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
     }
 }
