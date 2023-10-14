@@ -39,7 +39,7 @@ class MapRenderingServices(private val context: Context, private val map : MapVi
 
     init {
         Configuration.getInstance().load(context, androidx.preference.PreferenceManager.getDefaultSharedPreferences(context))
-        map.setTileSource(TileSourceFactory.MAPNIK)
+        map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE)
         map.setMultiTouchControls(true)
         val bogota= GeoPoint(4.62,-74.07)
         map.controller.setZoom(18.0)
