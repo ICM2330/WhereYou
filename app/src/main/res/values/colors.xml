@@ -2,6 +2,7 @@
 <resources>
     <color name="primary">#07BEB8</color>
     <color name="black">#FF000000</color>
+    <color name="grisOscuro">#343f4b</color>
     <color name="white">#FFFFFFFF</color>
     <color name="azul07">#07BEB8</color>
     <color name="azul3D">#3DCCC7</color>
