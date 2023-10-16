@@ -19,7 +19,7 @@ class MapaGrupoActivity : AppCompatActivity() {
         }
 
         binding.chats.setOnClickListener{
-           // startActivity(Intent(baseContext, ChatsActivity::class.java))
+            startActivity(Intent(baseContext, ChatsActivity::class.java))
         }
 
         binding.HAGrupos.setOnClickListener {
@@ -28,7 +28,7 @@ class MapaGrupoActivity : AppCompatActivity() {
         }
 
         binding.HAChats.setOnClickListener {
-          //  startActivity(Intent(baseContext,ChatsActivity::class.java))
+            startActivity(Intent(baseContext,ChatsActivity::class.java))
         }
 
         binding.HAHome.setOnClickListener {
@@ -42,7 +42,7 @@ class MapaGrupoActivity : AppCompatActivity() {
         }
 
         binding.HAPerfil.setOnClickListener {
-         //   startActivity(Intent(baseContext,PerfilActivity::class.java))
+            startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
     }
 }

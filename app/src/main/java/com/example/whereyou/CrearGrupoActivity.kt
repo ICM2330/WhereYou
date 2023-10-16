@@ -11,9 +11,9 @@ import android.widget.ArrayAdapter
 import com.example.whereyou.databinding.ActivityCrearGrupoBinding
 import com.example.whereyou.datos.Contactos
 
-private lateinit var binding: ActivityCrearGrupoBinding
-var contactos= mutableListOf<Contactos>()
 class CrearGrupoActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityCrearGrupoBinding
+    var contactos= mutableListOf<Contactos>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCrearGrupoBinding.inflate(layoutInflater)
@@ -30,39 +30,28 @@ class CrearGrupoActivity : AppCompatActivity() {
         val adapter = AdaptadorContactos(this, contacts)
         binding.listaContactos.adapter = adapter
 
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                com.example.whereyou.R.id.grupos -> {
-                    // Acción cuando se selecciona el elemento "Grupos"
+        binding.HAGrupos.setOnClickListener {
+            var intent = Intent(baseContext, GruposActivity::class.java)
+            startActivity(intent)
+        }
 
-                    var intent = Intent(baseContext, GruposActivity::class.java)
-                    startActivity(intent)
+        binding.HAChats.setOnClickListener {
+            val  intent = Intent(baseContext,ChatsActivity::class.java)
+            startActivity(intent)
+        }
 
-                    true
-                }
-                com.example.whereyou.R.id.chats -> {
-                    // Acción cuando se selecciona el elemento "Chats"
-                    true
-                }
-                com.example.whereyou.R.id.home -> {
-                    // Acción cuando se selecciona el elemento "Home"
-                    var intent = Intent(baseContext, HomeActivity::class.java)
-                    startActivity(intent)
+        binding.HAHome.setOnClickListener {
+            var intent = Intent(baseContext, HomeActivity::class.java)
+            startActivity(intent)
+        }
 
-                    true
-                }
-                com.example.whereyou.R.id.alertas -> {
-                    // Acción cuando se selecciona el elemento "Alertas"
-                    var intent = Intent(baseContext, NotificacionesActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                com.example.whereyou.R.id.perfil -> {
-                    // Acción cuando se selecciona el elemento "Perfil"
-                    true
-                }
-                else -> false
-            }
+        binding.HAAlertas.setOnClickListener {
+            var intent = Intent(baseContext, NotificacionesActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.HAPerfil.setOnClickListener {
+            startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
     }
 }
