@@ -8,12 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.whereyou.databinding.ActivityNotificacionesBinding
 import com.example.whereyou.datos.Contactos
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
-
+import com.google.firebase.auth.FirebaseAuth
 
 
 class NotificacionesActivity : AppCompatActivity() {
     private lateinit var binding : ActivityNotificacionesBinding
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNotificacionesBinding.inflate(layoutInflater)
@@ -47,6 +47,12 @@ class NotificacionesActivity : AppCompatActivity() {
 
         binding.GAPerfil.setOnClickListener {
             startActivity(Intent(baseContext,PerfilActivity::class.java))
+        }
+        binding.GAMenuLogOut.setOnClickListener {
+            auth.signOut()
+            val i = Intent(this, LoginActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(i)
         }
     }
 }

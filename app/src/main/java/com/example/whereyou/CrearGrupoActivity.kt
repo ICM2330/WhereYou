@@ -10,10 +10,12 @@ import android.view.View
 import android.widget.ArrayAdapter
 import com.example.whereyou.databinding.ActivityCrearGrupoBinding
 import com.example.whereyou.datos.Contactos
+import com.google.firebase.auth.FirebaseAuth
 
 class CrearGrupoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCrearGrupoBinding
     var contactos= mutableListOf<Contactos>()
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCrearGrupoBinding.inflate(layoutInflater)
@@ -52,6 +54,12 @@ class CrearGrupoActivity : AppCompatActivity() {
 
         binding.HAPerfil.setOnClickListener {
             startActivity(Intent(baseContext,PerfilActivity::class.java))
+        }
+        binding.GAMenuLogOut.setOnClickListener {
+            auth.signOut()
+            val i = Intent(this, LoginActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(i)
         }
     }
 }
