@@ -1,13 +1,14 @@
 package com.example.whereyou
 
-import AdaptadorContactos
+import ContactsAdapter
+import DisplayChat
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.example.whereyou.databinding.ActivityChatsBinding
-import com.example.whereyou.datos.Contactos
+import com.example.whereyou.datos.Contacto
 import com.google.firebase.auth.FirebaseAuth
 
 class ChatsActivity : AppCompatActivity() {
@@ -18,12 +19,12 @@ class ChatsActivity : AppCompatActivity() {
         binding= ActivityChatsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val contacts = listOf(
-            Contactos("Familia", "Integrantes: Alicia Bareto, Jose Mora, Daniel Mora..", R.drawable.usuario_perfil_logo),
-            Contactos("Sofia Martinez", "Tu: Estuvo Increible", R.drawable.usuario_perfil_logo),
-            Contactos("Alicia Bareto", "Alicia Bareto: Donde estas?", R.drawable.usuario_perfil_logo),
-            Contactos("Viaje Santa Marta", "Integrantes: Sofia Martinez, Valentina Ruiz..", R.drawable.usuario_perfil_logo)
+            Contacto(0, "Familia", "Integrantes: Alicia Bareto, Jose Mora, Daniel Mora..", R.drawable.usuario_perfil_logo),
+            Contacto(1, "Sofia Martinez", "Tu: Estuvo Increible", R.drawable.usuario_perfil_logo),
+            Contacto(2, "Alicia Bareto", "Alicia Bareto: Donde estas?", R.drawable.usuario_perfil_logo),
+            Contacto(3, "Viaje Santa Marta", "Integrantes: Sofia Martinez, Valentina Ruiz..", R.drawable.usuario_perfil_logo)
         )
-        val adapter = AdaptadorContactos(this, contacts)
+        val adapter = DisplayChat(this, contacts)
         binding.listaChats.adapter = adapter
 
         binding.listaChats.setOnItemClickListener { adapterView, view, i, l ->
@@ -53,20 +54,12 @@ class ChatsActivity : AppCompatActivity() {
         binding.HAPerfil.setOnClickListener {
             startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
-
-    }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val clicked = item.itemId
-        if(clicked == R.id.menuLogOut){
+        binding.GAMenuLogOut.setOnClickListener {
             auth.signOut()
-            val i = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            val i = Intent(this, LoginActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(i)
         }
-        return super.onOptionsItemSelected(item)
+
     }
 }

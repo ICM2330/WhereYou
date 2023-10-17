@@ -7,9 +7,12 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.whereyou.databinding.ActivityGruposBinding
 import com.example.whereyou.HomeActivity
+import com.google.firebase.auth.FirebaseAuth
 
-private lateinit var binding: ActivityGruposBinding
+
 class GruposActivity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
+    private lateinit var binding: ActivityGruposBinding
 
     private val array = arrayOf("Familia", "Amigos", "Viaje a medellin", "Parche del viernes")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,12 +25,11 @@ class GruposActivity : AppCompatActivity() {
 
         binding.GAListaGrupos.setOnItemClickListener { adapterView, view, i, l -> startActivity(Intent(baseContext,MapaGrupoActivity::class.java))}
 
-        binding.GAOpciones.setOnClickListener {
-
-        }
-
-        binding.GAInformacion.setOnClickListener {
-
+        binding.GAMenuLogOut.setOnClickListener {
+            auth.signOut()
+            val i = Intent(this, LoginActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(i)
         }
 
         binding.GANuevoContacto.setOnClickListener {
@@ -53,5 +55,6 @@ class GruposActivity : AppCompatActivity() {
         binding.GAPerfil.setOnClickListener {
             startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
+
     }
 }

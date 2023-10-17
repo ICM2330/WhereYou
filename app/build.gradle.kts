@@ -40,7 +40,6 @@ android {
 }
 
 dependencies {
-
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
@@ -54,4 +53,6 @@ dependencies {
     implementation("org.osmdroid:osmdroid-android:6.1.17")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("com.github.MKergall:osmbonuspack:6.9.0")
+    implementation("com.github.parse-community.Parse-SDK-Android:parse:1.26.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:3.8.1")
 }
