@@ -13,9 +13,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.example.whereyou.databinding.ActivityCrearGrupoBinding
 import androidx.activity.result.ActivityResultCallback
 import androidx.core.content.ContextCompat
+import com.example.whereyou.datos.Contactos
 
 class CrearGrupoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCrearGrupoBinding
+    lateinit var adapter : ContactsAdapter
+    var contactos= mutableListOf<Contactos>()
     //Permissions
     val getSimplePermission = registerForActivityResult(
         ActivityResultContracts.RequestPermission(),
@@ -23,7 +26,8 @@ class CrearGrupoActivity : AppCompatActivity() {
             updateUI(it)
         })
     val projection = arrayOf(ContactsContract.Profile._ID, ContactsContract.Profile.DISPLAY_NAME_PRIMARY)
-    lateinit var adapter : ContactsAdapter
+    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCrearGrupoBinding.inflate(layoutInflater)
@@ -104,6 +108,11 @@ class CrearGrupoActivity : AppCompatActivity() {
             //granted
             val cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, projection, null, null, null)
             adapter.changeCursor(cursor)
+        }
+        binding.GAMenuLogOut.setOnClickListener {
+            val i = Intent(this, LoginActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(i)
         }
     }
 }

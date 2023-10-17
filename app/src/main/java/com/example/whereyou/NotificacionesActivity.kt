@@ -5,10 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.whereyou.databinding.ActivityNotificacionesBinding
-import com.example.whereyou.datos.Contacto
-
-
-
+import com.example.whereyou.datos.Contactos
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class NotificacionesActivity : AppCompatActivity() {
     private lateinit var binding : ActivityNotificacionesBinding
@@ -45,6 +43,11 @@ class NotificacionesActivity : AppCompatActivity() {
 
         binding.GAPerfil.setOnClickListener {
             startActivity(Intent(baseContext,PerfilActivity::class.java))
+        }
+        binding.GAMenuLogOut.setOnClickListener {
+            val i = Intent(this, LoginActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(i)
         }
     }
 }

@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">WhereYou</string>
     <string name="hintContrasenia">Contraseña</string>
-    <string name="hintUsuario">Usuario o Email</string>
+    <string name="hintUsuario">Nombre de usuario</string>
+    <string name="perfil">Perfil</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="grupos">Grupos</string>
+    <string name="chat_del_grupo">Chat del grupo</string>
+    <string name="crear_grupo">Crear Grupo</string>
 </resources>

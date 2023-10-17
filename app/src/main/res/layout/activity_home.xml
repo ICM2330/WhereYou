@@ -215,4 +215,14 @@
         </LinearLayout>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/speedStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top|left"
+        android:text="ESTADO: Quieto"
+        android:textColor="@color/azul07"
+        android:textStyle="bold"
+        android:translationY="130dp" />
+
 </FrameLayout>

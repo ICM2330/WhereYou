@@ -16,7 +16,7 @@ class GyroscopeSensorService (context: Context){
         gyroscopeEventListener = object : SensorEventListener {
             override fun onSensorChanged(event: SensorEvent?) {
                 if (event != null && event.sensor.type == Sensor.TYPE_GYROSCOPE) {
-                    val rotation = event.values[1]
+                    val rotation = event.values[1] //Rotación en el eje y del dispositivo
                     //Se devuelve el resultado
                     listener(rotation)
                 }
@@ -33,7 +33,7 @@ class GyroscopeSensorService (context: Context){
         }
     }
 
-    fun unregisterAccelerometerSensorListener(){
+    fun unregisterGyroscopeSensorListener(){
         gyroscopeEventListener?.let {
             sensorManager.unregisterListener(it)
             gyroscopeEventListener = null
