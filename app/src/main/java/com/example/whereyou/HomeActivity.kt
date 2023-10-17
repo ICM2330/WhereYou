@@ -63,9 +63,9 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
         lightSensorService.registerLightSensorListener {
             mapRenderingService.changeMapColors(it)
         }
-        accelerometerSensorService.registerAccelerometerSensorListener {
+        /*accelerometerSensorService.registerAccelerometerSensorListener {
             changeSpeedStatus(it)
-        }
+        }*/
         mapEventService= MapEventServices(map, mapRenderingService)
         mapEventService.createOverlayEvents()
         if (ActivityCompat.checkSelfPermission(
@@ -165,6 +165,7 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
         super.onPause()
         map.onPause()
         lightSensorService.unregisterLightSensorListener()
+        accelerometerSensorService.unregisterAccelerometerSensorListener()
         locationService.stopLocationUpdates()
     }
     override fun onResume() {
