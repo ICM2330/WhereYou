@@ -221,8 +221,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|top|left"
         android:text="ESTADO: Quieto"
-        android:textColor="@color/black"
+        android:textColor="@color/azul07"
         android:textStyle="bold"
-        android:translationY="110dp" />
+        android:translationY="130dp" />
 
 </FrameLayout>
