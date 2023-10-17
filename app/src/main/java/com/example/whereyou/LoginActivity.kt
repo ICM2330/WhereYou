@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
 
     
     fun validateUser(user: String, pass: String){
+        var correcto = true
         val query: ParseQuery<ParseObject> = ParseQuery.getQuery("LoginUser")
         Log.i("Query", query.toString())
         query.findInBackground { objects, _ ->
@@ -40,11 +41,16 @@ class LoginActivity : AppCompatActivity() {
                     val password = row["password"] as String?
                     if(name.equals(user)&&password.equals(pass)){
                         startActivity(Intent(baseContext, HomeActivity::class.java))
+                        correcto = true
+                        break;
+                    } else{
+                        correcto = false
                     }
                 }
-                binding.info.text="Usuario o contraseña incorrectos"
+                if(correcto == false){
+                    binding.info.text = "Usuario o contraseña incorrectos"
+                }
             }
-
         }
     }
 
@@ -56,5 +62,4 @@ class LoginActivity : AppCompatActivity() {
         }
         return false
     }
-
 }

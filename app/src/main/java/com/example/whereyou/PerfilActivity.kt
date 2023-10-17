@@ -30,6 +30,12 @@ class PerfilActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPerfilBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.botonCambiarFoto.setOnClickListener{
+            var intent = Intent(baseContext, CambiarFotoActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.HAChats.setOnClickListener{
             startActivity(Intent(baseContext, ChatsActivity::class.java))
         }
