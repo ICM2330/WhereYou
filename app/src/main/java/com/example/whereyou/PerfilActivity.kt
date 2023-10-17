@@ -1,33 +1,25 @@
 package com.example.whereyou
 
-import AdaptadorContactos
+import android.R
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
-import com.example.whereyou.databinding.ActivityChatsBinding
-import com.example.whereyou.datos.Contactos
+import androidx.appcompat.app.AppCompatActivity
+import com.example.whereyou.databinding.ActivityPerfilBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class ChatsActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityChatsBinding
+
+class PerfilActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
+    private lateinit var binding : ActivityPerfilBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityChatsBinding.inflate(layoutInflater)
+        binding = ActivityPerfilBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val contacts = listOf(
-            Contactos("Familia", "Integrantes: Alicia Bareto, Jose Mora, Daniel Mora..", R.drawable.usuario_perfil_logo),
-            Contactos("Sofia Martinez", "Tu: Estuvo Increible", R.drawable.usuario_perfil_logo),
-            Contactos("Alicia Bareto", "Alicia Bareto: Donde estas?", R.drawable.usuario_perfil_logo),
-            Contactos("Viaje Santa Marta", "Integrantes: Sofia Martinez, Valentina Ruiz..", R.drawable.usuario_perfil_logo)
-        )
-        val adapter = AdaptadorContactos(this, contacts)
-        binding.listaChats.adapter = adapter
-
-        binding.listaChats.setOnItemClickListener { adapterView, view, i, l ->
-            startActivity(Intent(baseContext, GroupChatActivity::class.java))
+        binding.HAChats.setOnClickListener{
+            startActivity(Intent(baseContext, ChatsActivity::class.java))
         }
 
         binding.HAGrupos.setOnClickListener {
@@ -36,8 +28,7 @@ class ChatsActivity : AppCompatActivity() {
         }
 
         binding.HAChats.setOnClickListener {
-            val  intent = Intent(baseContext,ChatsActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(baseContext,ChatsActivity::class.java))
         }
 
         binding.HAHome.setOnClickListener {
@@ -53,20 +44,22 @@ class ChatsActivity : AppCompatActivity() {
         binding.HAPerfil.setOnClickListener {
             startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
-
     }
+    /*
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val clicked = item.itemId
-        if(clicked == R.id.menuLogOut){
+        if(clicked == R.id.signout){
             auth.signOut()
             val i = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(i)
         }
         return super.onOptionsItemSelected(item)
     }
+    */
+
 }

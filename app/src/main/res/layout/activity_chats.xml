@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/menuNotificaciones"
+        android:id="@+id/GAOpciones"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="@id/toolbarNotificaciones" />
 
     <ImageButton
-        android:id="@+id/infoNotificaciones"
+        android:id="@+id/GAInformacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toTopOf="@id/toolbarNotificaciones" />
 
     <TextView
-        android:id="@+id/titleText"
+        android:id="@+id/Perfil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -52,9 +52,9 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/toolbarNotificaciones"
-        app:layout_constraintEnd_toStartOf="@id/infoNotificaciones"
+        app:layout_constraintEnd_toStartOf="@id/GAInformacion"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/menuNotificaciones"
+        app:layout_constraintStart_toEndOf="@id/GAOpciones"
         app:layout_constraintTop_toTopOf="@id/toolbarNotificaciones" />
 
     <EditText

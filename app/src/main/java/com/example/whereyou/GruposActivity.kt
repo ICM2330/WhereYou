@@ -31,7 +31,7 @@ class GruposActivity : AppCompatActivity() {
         }
 
         binding.GANuevoContacto.setOnClickListener {
-			startActivity(Intent(baseContext,CrearGrupoActivity::class.java))
+            startActivity(Intent(baseContext,CrearGrupoActivity::class.java))
         }
 
         binding.GAGrupos.setOnClickListener {
@@ -39,7 +39,7 @@ class GruposActivity : AppCompatActivity() {
         }
 
         binding.GAChats.setOnClickListener {
-            //startActivity(Intent(baseContext,ChatsActivity::class.java))
+            startActivity(Intent(baseContext,ChatsActivity::class.java))
         }
 
         binding.GAHome.setOnClickListener {
@@ -51,7 +51,7 @@ class GruposActivity : AppCompatActivity() {
         }
 
         binding.GAPerfil.setOnClickListener {
-            //startActivity(Intent(baseContext,PerfilActivity::class.java))
+            startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
     }
 }
