@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.whereyou.databinding.ActivityNotificacionesBinding
-import com.example.whereyou.datos.Contactos
+import com.example.whereyou.datos.Contacto
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class NotificacionesActivity : AppCompatActivity() {

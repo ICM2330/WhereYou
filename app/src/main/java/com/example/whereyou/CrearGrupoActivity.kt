@@ -13,12 +13,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.example.whereyou.databinding.ActivityCrearGrupoBinding
 import androidx.activity.result.ActivityResultCallback
 import androidx.core.content.ContextCompat
-import com.example.whereyou.datos.Contactos
+import com.example.whereyou.datos.Contacto
 
 class CrearGrupoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCrearGrupoBinding
     lateinit var adapter : ContactsAdapter
-    var contactos= mutableListOf<Contactos>()
+    var contactos= mutableListOf<Contacto>()
     //Permissions
     val getSimplePermission = registerForActivityResult(
         ActivityResultContracts.RequestPermission(),
@@ -52,6 +52,31 @@ class CrearGrupoActivity : AppCompatActivity() {
             android:layout_marginRight="4dp"
             app:srcCompat="@drawable/usuario_perfil_logo" />
              */
+
+            binding.GAGrupos.setOnClickListener {
+                startActivity(Intent(baseContext,GruposActivity::class.java))
+            }
+
+            binding.GAChats.setOnClickListener {
+                startActivity(Intent(baseContext,ChatsActivity::class.java))
+            }
+
+            binding.GAHome.setOnClickListener {
+                startActivity(Intent(baseContext, HomeActivity::class.java))
+            }
+
+            binding.GAAlertas.setOnClickListener {
+                startActivity(Intent(baseContext,NotificacionesActivity::class.java))
+            }
+
+            binding.GAPerfil.setOnClickListener {
+                startActivity(Intent(baseContext,PerfilActivity::class.java))
+            }
+            binding.GAMenuLogOut.setOnClickListener {
+                val i = Intent(this, LoginActivity::class.java)
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(i)
+            }
             updateUI(true)
             binding.listaContactos.setOnItemClickListener{parent, view, position, id ->
                 val imageView = ImageView(this)
@@ -60,45 +85,6 @@ class CrearGrupoActivity : AppCompatActivity() {
                     (40 * density + 0.5f).toInt(),LinearLayout.LayoutParams.MATCH_PARENT
                 )
                 binding.linearL.addView(imageView)
-            }
-        }
-
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                com.example.whereyou.R.id.grupos -> {
-                    // Acción cuando se selecciona el elemento "Grupos"
-
-                    var intent = Intent(baseContext, GruposActivity::class.java)
-                    startActivity(intent)
-
-                    true
-                }
-                com.example.whereyou.R.id.chats -> {
-                    // Acción cuando se selecciona el elemento "Chats"
-                    var intent = Intent(baseContext, ChatsActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                com.example.whereyou.R.id.home -> {
-                    // Acción cuando se selecciona el elemento "Home"
-                    var intent = Intent(baseContext, HomeActivity::class.java)
-                    startActivity(intent)
-
-                    true
-                }
-                com.example.whereyou.R.id.alertas -> {
-                    // Acción cuando se selecciona el elemento "Alertas"
-                    var intent = Intent(baseContext, NotificacionesActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                com.example.whereyou.R.id.perfil -> {
-                    var intent = Intent(baseContext, PerfilActivity::class.java)
-                    startActivity(intent)
-                    // Acción cuando se selecciona el elemento "Perfil"
-                    true
-                }
-                else -> false
             }
         }
     }

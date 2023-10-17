@@ -13,7 +13,7 @@
         android:background="@color/azul3D"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toTopOf="@+id/imageView5"
+        app:layout_constraintBottom_toTopOf="@+id/botonCambiarFoto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -167,8 +167,8 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView5"
+    <ImageButton
+        android:id="@+id/botonCambiarFoto"
         android:layout_width="400dp"
         android:layout_height="150dp"
         android:layout_marginTop="32dp"
@@ -176,7 +176,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarNotificaciones"
-        android:src="@drawable/person_login" />
+        android:src="@drawable/person_login"
+        android:scaleType="fitCenter"
+        android:background="@color/white"
+        />
 
     <TextView
         android:id="@+id/textView3"
@@ -189,7 +192,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/botonCambiarFoto" />
 
     <TextView
         android:id="@+id/textView4"
