@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">WhereYou</string>
     <string name="hintContrasenia">Contraseña</string>
-    <string name="hintUsuario">Usuario o Email</string>
+    <string name="hintUsuario">Nombre de usuario</string>
     <string name="perfil">Perfil</string>
     <string name="notificaciones">Notificaciones</string>
     <string name="grupos">Grupos</string>
