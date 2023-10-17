@@ -63,9 +63,10 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
         lightSensorService.registerLightSensorListener {
             mapRenderingService.changeMapColors(it)
         }
-        /*accelerometerSensorService.registerAccelerometerSensorListener {
+        accelerometerSensorService = AccelerometerSensorService(this)
+        accelerometerSensorService.registerAccelerometerSensorListener {
             changeSpeedStatus(it)
-        }*/
+        }
         mapEventService= MapEventServices(map, mapRenderingService)
         mapEventService.createOverlayEvents()
         if (ActivityCompat.checkSelfPermission(
@@ -204,11 +205,11 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
     }
 
     private fun changeSpeedStatus(speed: Float){
-        if(speed <= 1){
+        if(speed <= 3){
             binding.speedStatus.text = "ESTADO: Quieto"
             binding.speedStatus.setTextColor(resources.getColor(R.color.verde))
         }
-        if(speed > 1 && speed <= 14.7){
+        if(speed > 3 && speed <= 14.7){
             binding.speedStatus.text = "ESTADO: Caminando"
             binding.speedStatus.setTextColor(resources.getColor(R.color.amarilloVerdoso))
         }
