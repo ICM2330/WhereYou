@@ -23,7 +23,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/usuario"
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="10dp"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imgLogin" />
 
     <EditText
-        android:id="@+id/contrasenia"
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="10dp"
@@ -50,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usuario" />
+        app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <ImageView
         android:id="@+id/imgLogin"
@@ -62,19 +62,19 @@
         app:srcCompat="@drawable/person_login" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="10dp"
         android:backgroundTint="#68D8D6"
-        android:text="LOG IN"
+        android:text="Iniciar sesión"
         android:textColor="#343F4B"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contrasenia" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <TextView
         android:id="@+id/OR"
@@ -84,54 +84,23 @@
         android:text="O"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/login" />
 
     <Button
-        android:id="@+id/facebookLogin"
+        android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="100dp"
         android:backgroundTint="#3C4858"
         android:drawablePadding="8dp"
-        android:text="INGRESAR CON FACEBOOK"
-        android:drawableLeft="@drawable/facebook_icon"
+        android:text="Registrarme"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/OR" />
-
-    <Button
-        android:id="@+id/twitterLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="#8492A6"
-        android:drawableLeft="@drawable/twitter_icon"
-        android:drawablePadding="8dp"
-        android:text="INGRESAR CON TWITTER"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/facebookLogin" />
-
-    <Button
-        android:id="@+id/googleLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="#C0CCDA"
-        android:drawableLeft="@drawable/google_icon"
-        android:drawablePadding="8dp"
-        android:text="INGRESAR CON GOOGLE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/twitterLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
