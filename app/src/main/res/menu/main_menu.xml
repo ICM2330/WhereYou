@@ -7,7 +7,4 @@
         android:title="menulogout"
         app:showAsAction="ifRoom"
     />
-    <item
-        android:id="@+id/menuSettings"
-        android:title="menuConfiguracion" />
 </menu>

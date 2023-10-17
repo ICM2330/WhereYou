@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.whereyou.databinding.ActivityGroupChatBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class GroupChatActivity : AppCompatActivity() {
     private lateinit var binding : ActivityGroupChatBinding
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGroupChatBinding.inflate(layoutInflater)
@@ -35,6 +37,12 @@ class GroupChatActivity : AppCompatActivity() {
 
         binding.HAPerfil.setOnClickListener {
             startActivity(Intent(baseContext,PerfilActivity::class.java))
+        }
+        binding.GAMenuLogOut.setOnClickListener {
+            auth.signOut()
+            val i = Intent(this, LoginActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(i)
         }
 
 

@@ -1,6 +1,5 @@
 package com.example.whereyou
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -10,10 +9,23 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.whereyou.databinding.ActivityPerfilBinding
 import com.google.firebase.auth.FirebaseAuth
 
-
 class PerfilActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var binding : ActivityPerfilBinding
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val clicked = item.itemId
+        if(clicked == R.id.menuLogOut){
+            auth.signOut()
+            val i = Intent(this, MainActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(i)
+        }
+        return super.onOptionsItemSelected(item)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPerfilBinding.inflate(layoutInflater)
@@ -44,22 +56,15 @@ class PerfilActivity : AppCompatActivity() {
         binding.HAPerfil.setOnClickListener {
             startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
-    }
-    /*
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val clicked = item.itemId
-        if(clicked == R.id.signout){
+
+        binding.GAMenuLogOut.setOnClickListener {
             auth.signOut()
-            val i = Intent(this, MainActivity::class.java)
+            val i = Intent(this, LoginActivity::class.java)
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(i)
         }
-        return super.onOptionsItemSelected(item)
     }
-    */
+
+
 
 }
