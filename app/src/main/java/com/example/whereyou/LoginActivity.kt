@@ -42,7 +42,9 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(Intent(baseContext, HomeActivity::class.java))
                     }
                 }
+                binding.info.text="Usuario o contraseña incorrectos"
             }
+
         }
     }
 
