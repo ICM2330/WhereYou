@@ -19,6 +19,7 @@ import com.example.whereyou.services.MapRenderingServices
 import androidx.core.app.ActivityCompat
 import com.example.whereyou.model.MyLocation
 import com.example.whereyou.services.AccelerometerSensorService
+import com.example.whereyou.services.MagneticFieldSensorService
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
@@ -37,6 +38,7 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
     private lateinit var locationService: LocationService
     private lateinit var lightSensorService: LightSensorService
     private lateinit var accelerometerSensorService: AccelerometerSensorService
+    private lateinit var magneticFieldSensorService: MagneticFieldSensorService
     private lateinit var map: MapView
     private lateinit var mapRenderingService: MapRenderingServices
     private lateinit var mapEventService: MapEventServices
@@ -66,6 +68,10 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
         accelerometerSensorService = AccelerometerSensorService(this)
         accelerometerSensorService.registerAccelerometerSensorListener {
             changeSpeedStatus(it)
+        }
+        magneticFieldSensorService = MagneticFieldSensorService(this)
+        magneticFieldSensorService.registerMagneticFieldSensorListener {
+            binding.cardinalPoints.rotation = it
         }
         mapEventService= MapEventServices(map, mapRenderingService)
         mapEventService.createOverlayEvents()
@@ -167,6 +173,7 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
         map.onPause()
         lightSensorService.unregisterLightSensorListener()
         accelerometerSensorService.unregisterAccelerometerSensorListener()
+        magneticFieldSensorService.unregisterMagneticFieldSensorListener()
         locationService.stopLocationUpdates()
     }
     override fun onResume() {
@@ -177,6 +184,12 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
             mapRenderingService.changeMapColors(it)
         }
         locationService.startLocationUpdates()
+        accelerometerSensorService.registerAccelerometerSensorListener {
+            changeSpeedStatus(it)
+        }
+        magneticFieldSensorService.registerMagneticFieldSensorListener {
+            binding.cardinalPoints.rotation = it
+        }
     }
 
     private fun locationSettings(){
