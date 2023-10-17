@@ -1,40 +1,34 @@
 package com.example.whereyou
 
+import android.R
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Log
-import android.widget.ImageView
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.whereyou.databinding.ActivityPerfilBinding
+import com.google.firebase.auth.FirebaseAuth
 
 
 class PerfilActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityPerfilBinding
+    private lateinit var auth: FirebaseAuth
+    private lateinit var binding : ActivityPerfilBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityPerfilBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
+        binding = ActivityPerfilBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.imgPerfil.setOnClickListener(){
-            var intent = Intent(baseContext, CambiarFotoActivity::class.java)
-            startActivity(intent)
-
-            //val imagenBitmap = intent.getParcelableExtra<Bitmap>("imagen_seleccionada")
-            //if (imagenBitmap != null) {
-                //Log.i("Perfila", "Entre aqui $imagenBitmap")
-                //binding.imgPerfil.setImageBitmap(imagenBitmap)
-            //}
+        binding.HAChats.setOnClickListener{
+            startActivity(Intent(baseContext, ChatsActivity::class.java))
         }
+
         binding.HAGrupos.setOnClickListener {
             var intent = Intent(baseContext, GruposActivity::class.java)
             startActivity(intent)
         }
 
         binding.HAChats.setOnClickListener {
-            val  intent = Intent(baseContext,ChatsActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(baseContext,ChatsActivity::class.java))
         }
 
         binding.HAHome.setOnClickListener {
@@ -51,4 +45,21 @@ class PerfilActivity : AppCompatActivity() {
             startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
     }
+    /*
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val clicked = item.itemId
+        if(clicked == R.id.signout){
+            auth.signOut()
+            val i = Intent(this, MainActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(i)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+    */
+
 }

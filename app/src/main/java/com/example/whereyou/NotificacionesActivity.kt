@@ -8,9 +8,10 @@ import com.example.whereyou.databinding.ActivityNotificacionesBinding
 import com.example.whereyou.datos.Contacto
 
 
-private lateinit var binding : ActivityNotificacionesBinding
+
 
 class NotificacionesActivity : AppCompatActivity() {
+    private lateinit var binding : ActivityNotificacionesBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNotificacionesBinding.inflate(layoutInflater)
@@ -25,39 +26,25 @@ class NotificacionesActivity : AppCompatActivity() {
         val adapter = DisplayChat(this, contacts)
         binding.listaNotificaciones.adapter = adapter
 
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                 R.id.grupos -> {
-                    // Acción cuando se selecciona el elemento "Grupos"
 
-                     var intent = Intent(baseContext, GruposActivity::class.java)
-                     startActivity(intent)
+        binding.GAGrupos.setOnClickListener {
+            startActivity(Intent(baseContext,GruposActivity::class.java))
+        }
 
-                    true
-                }
-                R.id.chats -> {
-                    // Acción cuando se selecciona el elemento "Chats"
-                    true
-                }
-                R.id.home -> {
-                    // Acción cuando se selecciona el elemento "Home"
-                    var intent = Intent(baseContext, HomeActivity::class.java)
-                    startActivity(intent)
+        binding.GAChats.setOnClickListener {
+            startActivity(Intent(baseContext,ChatsActivity::class.java))
+        }
 
-                    true
-                }
-                R.id.alertas -> {
-                    // Acción cuando se selecciona el elemento "Alertas"
-                    var intent = Intent(baseContext, NotificacionesActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                R.id.perfil -> {
-                    // Acción cuando se selecciona el elemento "Perfil"
-                    true
-                }
-                else -> false
-            }
+        binding.GAHome.setOnClickListener {
+            startActivity(Intent(baseContext, HomeActivity::class.java))
+        }
+
+        binding.GAAlertas.setOnClickListener {
+            startActivity(Intent(baseContext,NotificacionesActivity::class.java))
+        }
+
+        binding.GAPerfil.setOnClickListener {
+            startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
     }
 }

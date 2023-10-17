@@ -7,40 +7,41 @@
     tools:context=".NotificacionesActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarPerfil"
+        android:id="@+id/toolbarNotificaciones"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/azul3D"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/listaNotificaciones"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/menuNotificaciones"
+        android:id="@+id/GAOpciones"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:padding="8dp"
         android:src="@drawable/menu_toolbar"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarNotificaciones"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
+        app:layout_constraintTop_toTopOf="@id/toolbarNotificaciones" />
 
     <ImageButton
-        android:id="@+id/infoNotificaciones"
+        android:id="@+id/GAInformacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:padding="8dp"
         android:src="@drawable/info_toolbar"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarNotificaciones"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
+        app:layout_constraintTop_toTopOf="@id/toolbarNotificaciones" />
 
     <TextView
-        android:id="@+id/titleText"
+        android:id="@+id/Perfil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -50,46 +51,142 @@
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
-        app:layout_constraintEnd_toStartOf="@id/infoNotificaciones"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarNotificaciones"
+        app:layout_constraintEnd_toStartOf="@id/GAInformacion"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/menuNotificaciones"
-        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
+        app:layout_constraintStart_toEndOf="@id/GAOpciones"
+        app:layout_constraintTop_toTopOf="@id/toolbarNotificaciones" />
 
 
 
     <ListView
         android:id="@+id/listaNotificaciones"
-        android:layout_width="409dp"
-        android:layout_height="604dp"
-        app:layout_constraintBottom_toTopOf="@+id/separador"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarPerfil" />
-
-    <View
-        android:id="@+id/separador"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/azul3D"
+        android:layout_height="604dp"
+        app:layout_constraintBottom_toTopOf="@+id/GA_barraPrincipal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf = "@id/listaNotificaciones"
-        app:layout_constraintBottom_toTopOf = "@id/bottomNavigationView"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarNotificaciones" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="1dp"
-        app:itemIconTint="@color/azul07"
-        app:labelVisibilityMode="labeled"
+
+    <LinearLayout
+        android:id="@+id/GA_barraPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/separador"
-        app:menu="@menu/bottom_nav_menu" />
+        app:layout_constraintTop_toBottomOf="@+id/listaNotificaciones">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/GA_grupos"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:backgroundTint="#07BDB7"
+                android:src="@drawable/baseline_groups_24" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Grupos" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/GA_chats"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#07BDB7"
+                android:src="@drawable/baseline_chat_24" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Chats" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/GA_home"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#07BDB7"
+                android:src="@drawable/baseline_home_24" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="HOME" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/GA_alertas"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#07BDB7"
+                android:src="@drawable/baseline_notifications_24" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Alertas" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/GA_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#07BDB7"
+                android:src="@drawable/baseline_person_24" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Perfil" />
+        </LinearLayout>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
