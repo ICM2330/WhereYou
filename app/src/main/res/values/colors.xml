@@ -10,4 +10,9 @@
     <color name="azul9c">#9CEAEF</color>
     <color name="azulc4">#C4FFF9</color>
     <color name="gray">#DBDBDB</color>
+    <color name="verde">#08EA00</color>
+    <color name="amarilloVerdoso">#7DEA00</color>
+    <color name="amarillo">#C7EA00</color>
+    <color name="naranja">#EAA800</color>
+    <color name="rojo">#EA3700</color>
 </resources>

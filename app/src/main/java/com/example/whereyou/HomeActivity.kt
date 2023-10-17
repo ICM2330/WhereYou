@@ -18,6 +18,7 @@ import com.example.whereyou.services.MapEventServices
 import com.example.whereyou.services.MapRenderingServices
 import androidx.core.app.ActivityCompat
 import com.example.whereyou.model.MyLocation
+import com.example.whereyou.services.AccelerometerSensorService
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
@@ -35,9 +36,12 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
     private lateinit var binding : ActivityHomeBinding
     private lateinit var locationService: LocationService
     private lateinit var lightSensorService: LightSensorService
+    private lateinit var accelerometerSensorService: AccelerometerSensorService
     private lateinit var map: MapView
     private lateinit var mapRenderingService: MapRenderingServices
     private lateinit var mapEventService: MapEventServices
+
+
 
     private val locationSettings= registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()
     ) {
@@ -58,6 +62,9 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
         mapRenderingService= MapRenderingServices(this,map)
         lightSensorService.registerLightSensorListener {
             mapRenderingService.changeMapColors(it)
+        }
+        accelerometerSensorService.registerAccelerometerSensorListener {
+            changeSpeedStatus(it)
         }
         mapEventService= MapEventServices(map, mapRenderingService)
         mapEventService.createOverlayEvents()
@@ -123,7 +130,7 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
         }
 
         binding.HAPerfil.setOnClickListener {
-            //startActivity(Intent(baseContext,PerfilActivity::class.java))
+            startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
     }
 
@@ -193,5 +200,28 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
 
     override fun onLocationUpdate(location: Location) {
         updateUI(location)
+    }
+
+    private fun changeSpeedStatus(speed: Float){
+        if(speed <= 1){
+            binding.speedStatus.text = "ESTADO: Quieto"
+            binding.speedStatus.setTextColor(resources.getColor(R.color.verde))
+        }
+        if(speed > 1 && speed <= 14.7){
+            binding.speedStatus.text = "ESTADO: Caminando"
+            binding.speedStatus.setTextColor(resources.getColor(R.color.amarilloVerdoso))
+        }
+        if(speed > 14.7 && speed <= 24.9){
+            binding.speedStatus.text = "ESTADO: Trotando"
+            binding.speedStatus.setTextColor(resources.getColor(R.color.amarillo))
+        }
+        if(speed > 24.9 && speed <= 49){
+            binding.speedStatus.text = "ESTADO: Corrieno"
+            binding.speedStatus.setTextColor(resources.getColor(R.color.naranja))
+        }
+        if(speed > 49){
+            binding.speedStatus.text = "ESTADO: En un vehiculo"
+            binding.speedStatus.setTextColor(resources.getColor(R.color.rojo))
+        }
     }
 }
