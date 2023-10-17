@@ -123,7 +123,7 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
         }
 
         binding.HAPerfil.setOnClickListener {
-            //startActivity(Intent(baseContext,PerfilActivity::class.java))
+            startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
     }
 

@@ -7,7 +7,7 @@
     tools:context=".NotificacionesActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarNotificaciones"
+        android:id="@+id/toolbarPerfil"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/azul3D"
@@ -24,9 +24,9 @@
         android:background="@android:color/transparent"
         android:padding="8dp"
         android:src="@drawable/menu_toolbar"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarNotificaciones"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toolbarNotificaciones" />
+        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
 
     <ImageButton
         android:id="@+id/infoNotificaciones"
@@ -35,9 +35,9 @@
         android:background="@android:color/transparent"
         android:padding="8dp"
         android:src="@drawable/info_toolbar"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarNotificaciones"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toolbarNotificaciones" />
+        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
 
     <TextView
         android:id="@+id/titleText"
@@ -50,11 +50,11 @@
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarNotificaciones"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
         app:layout_constraintEnd_toStartOf="@id/infoNotificaciones"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@id/menuNotificaciones"
-        app:layout_constraintTop_toTopOf="@id/toolbarNotificaciones" />
+        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
 
 
 
@@ -65,7 +65,7 @@
         app:layout_constraintBottom_toTopOf="@+id/separador"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarNotificaciones" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarPerfil" />
 
     <View
         android:id="@+id/separador"
@@ -91,7 +91,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/separador"
         app:menu="@menu/bottom_nav_menu" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

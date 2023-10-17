@@ -1,13 +1,11 @@
 package com.example.whereyou
 
-import AdaptadorContactos
+import DisplayChat
 import android.content.Intent
-import com.example.whereyou.R
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.whereyou.databinding.ActivityNotificacionesBinding
-import com.example.whereyou.datos.Contactos
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.whereyou.datos.Contacto
 
 
 private lateinit var binding : ActivityNotificacionesBinding
@@ -18,13 +16,13 @@ class NotificacionesActivity : AppCompatActivity() {
         binding = ActivityNotificacionesBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val contacts = listOf(
-            Contactos("Monserrate", "¡Has sido invitado a un nuevo grupo!", R.drawable.usuario_perfil_logo),
-            Contactos("Un nuevo amigo", "Daniel Florido se ha unido, ¡Salúdalo!", R.drawable.usuario_perfil_logo),
-            Contactos("¡Alerta!", "Alguien ha entrado a tu cuenta", R.drawable.usuario_perfil_logo),
-            Contactos("Un nuevo amigo", "Daniela Flores se ha unido, ¡Salúdalo!", R.drawable.usuario_perfil_logo)
+            Contacto(0,"Monserrate", "¡Has sido invitado a un nuevo grupo!", R.drawable.usuario_perfil_logo),
+            Contacto(1,"Un nuevo amigo", "Daniel Florido se ha unido, ¡Salúdalo!", R.drawable.usuario_perfil_logo),
+            Contacto(2,"¡Alerta!", "Alguien ha entrado a tu cuenta", R.drawable.usuario_perfil_logo),
+            Contacto(3,"Un nuevo amigo", "Daniela Flores se ha unido, ¡Salúdalo!", R.drawable.usuario_perfil_logo)
             // Agrega más contactos aquí
         )
-        val adapter = AdaptadorContactos(this, contacts)
+        val adapter = DisplayChat(this, contacts)
         binding.listaNotificaciones.adapter = adapter
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->

@@ -1,107 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarPerfil"
         android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/azul3D"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/menuNotificaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        android:src="@drawable/menu_toolbar"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
+
+    <ImageButton
+        android:id="@+id/infoNotificaciones"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:translationY="20dp">
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        android:src="@drawable/info_toolbar"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
 
-        <ImageButton
-            android:id="@+id/HA_opciones"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:backgroundTint="#07BDB7"
-            android:src="@drawable/baseline_view_headline_24" />
-
-        <EditText
-            android:id="@+id/HA_busquedaUbicacion"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:ems="10"
-            android:gravity="bottom|center|start"
-            android:inputType="text"
-            android:text="Ubicación" />
-
-        <ImageButton
-            android:id="@+id/HA_borrar"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:backgroundTint="#07BDB7"
-            android:src="@drawable/baseline_close_24" />
-
-        <ImageButton
-            android:id="@+id/HA_microfono"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:backgroundTint="#07BDB7"
-            android:src="@drawable/baseline_mic_24" />
-
-    </LinearLayout>
-    <org.osmdroid.views.MapView
-        android:id="@+id/mapa"
-        android:layout_width="411dp"
-        android:layout_height="511dp"
-        android:layout_gravity="center_horizontal|center_vertical">
-    </org.osmdroid.views.MapView>
-
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="Perfil"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
+        app:layout_constraintEnd_toStartOf="@id/infoNotificaciones"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/menuNotificaciones"
+        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:rotationY="0"
-        android:translationY="250dp">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/HA_ubicacion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ubicación Actual"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/HA_direccion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cra. 7 #40-62"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/HA_ubicacionActual"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:backgroundTint="#07BDB7"
-            android:src="@drawable/baseline_my_location_24" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/HA_barraPrincipal"
+        android:id="@+id/CA_barraPrincipal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -211,4 +173,48 @@
         </LinearLayout>
     </LinearLayout>
 
-</FrameLayout>
+
+    <ImageButton
+        android:id="@+id/imgPerfil"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/white"
+        android:scaleType="fitCenter"
+        android:src="@drawable/usuario_perfil_logo"
+        app:layout_constraintBottom_toTopOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarPerfil" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="Nombre"
+        app:layout_constraintBottom_toTopOf="@+id/descripcionUsr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPerfil" />
+
+    <TextView
+        android:id="@+id/descripcionUsr"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Descripcion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
