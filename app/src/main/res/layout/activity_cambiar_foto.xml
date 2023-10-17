@@ -14,7 +14,6 @@
         android:background="@color/azul3D"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toTopOf="@+id/GA_buscador"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,9 +29,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
 
-
-  <ImageButton
-        android:id="@+id/GAMenuLogOut"
+    <ImageButton
+        android:id="@+id/infoNotificaciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
@@ -42,34 +40,66 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
 
-
     <TextView
         android:id="@+id/titleText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:gravity="left"
-        android:text="@string/crear_grupo"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="Editar foto de Perfil"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
+        app:layout_constraintEnd_toStartOf="@id/infoNotificaciones"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/menuNotificaciones"
         app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
-        app:layout_constraintBottom_toBottomOf="@id/toolbarNotificaciones"
-        app:layout_constraintEnd_toStartOf="@id/GAMenuLogOut"
-        app:layout_constraintStart_toStartOf="parent" />
-  
-    <EditText
-        android:id="@+id/GA_buscador"
+
+    <ImageView
+        android:id="@+id/image"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Nombre de grupo o persona"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/galleryButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarPerfil" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarPerfil"
+        app:srcCompat="@drawable/usuario_perfil_logo" />
+
+    <Button
+        android:id="@+id/galleryButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:text="Gallery"
+        app:layout_constraintBottom_toTopOf="@+id/CA_barraPrincipal"
+        app:layout_constraintEnd_toStartOf="@+id/cameraButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+    <Button
+        android:id="@+id/cameraButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="Camera"
+        app:layout_constraintBottom_toTopOf="@+id/CA_barraPrincipal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/galleryButton"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        app:layout_constraintVertical_bias="1.0" />
 
     <LinearLayout
         android:id="@+id/CA_barraPrincipal"
@@ -188,16 +218,5 @@
                 android:text="Perfil" />
         </LinearLayout>
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/listaChats"
-        android:layout_width="0dp"
-        android:layout_height="540dp"
-        app:layout_constraintBottom_toTopOf="@+id/CA_barraPrincipal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GA_buscador"
-        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
