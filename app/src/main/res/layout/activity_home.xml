@@ -64,7 +64,7 @@
         android:text="ESTADO: Quieto"
         android:textColor="@color/azul07"
         android:textStyle="bold"
-        android:translationY="130dp" />
+        android:translationY="110dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
