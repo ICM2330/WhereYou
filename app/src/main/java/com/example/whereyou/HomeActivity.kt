@@ -218,11 +218,11 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
     }
 
     private fun changeSpeedStatus(speed: Float){
-        if(speed <= 3){
+        if(speed <= 1){
             binding.speedStatus.text = "ESTADO: Quieto"
             binding.speedStatus.setTextColor(resources.getColor(R.color.verde))
         }
-        if(speed > 3 && speed <= 14.7){
+        if(speed > 1 && speed <= 14.7){
             binding.speedStatus.text = "ESTADO: Caminando"
             binding.speedStatus.setTextColor(resources.getColor(R.color.amarilloVerdoso))
         }
