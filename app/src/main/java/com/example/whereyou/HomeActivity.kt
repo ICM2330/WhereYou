@@ -50,7 +50,7 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
         if (it.resultCode == RESULT_OK) {
             locationService.startLocationUpdates()
         } else {
-            //Todo
+            Toast.makeText(this, "La localizacion esta desactivada", Toast.LENGTH_LONG).show()
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -201,14 +201,16 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
             locationService.startLocationUpdates()
         }
 
-        task.addOnFailureListener{
-            if(it is ResolvableApiException){
+        task.addOnFailureListener{exception ->
+            if(exception is ResolvableApiException){
                 try {
-                    val isr: IntentSenderRequest = IntentSenderRequest.Builder(it.resolution).build()
+                    val isr: IntentSenderRequest = IntentSenderRequest.Builder(exception.resolution).build()
                     locationSettings.launch(isr)
                 }catch (sendEx: IntentSender.SendIntentException){
                     //eso!!
                 }
+            }else{
+                Toast.makeText(this, "No hay hardware para el GPS", Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -218,11 +220,11 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
     }
 
     private fun changeSpeedStatus(speed: Float){
-        if(speed <= 1){
+        if(speed <= 0.2){
             binding.speedStatus.text = "ESTADO: Quieto"
             binding.speedStatus.setTextColor(resources.getColor(R.color.verde))
         }
-        if(speed > 1 && speed <= 14.7){
+        if(speed > 0.2 && speed <= 14.7){
             binding.speedStatus.text = "ESTADO: Caminando"
             binding.speedStatus.setTextColor(resources.getColor(R.color.amarilloVerdoso))
         }
