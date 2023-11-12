@@ -63,12 +63,7 @@ class PerfilActivity : AppCompatActivity() {
             startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
 
-        binding.GAMenuLogOut.setOnClickListener {
-            auth.signOut()
-            val i = Intent(this, LoginActivity::class.java)
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(i)
-        }
+
     }
 
 

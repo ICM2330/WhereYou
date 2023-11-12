@@ -1,7 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.WhereYou" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.WhereYou" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/azul68</item>
     </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="MyMenuItemText" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="Theme.WhereYou" parent="Base.Theme.WhereYou" />
 </resources>

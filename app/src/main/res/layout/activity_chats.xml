@@ -7,69 +7,16 @@
     tools:context=".ChatsActivity">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarPerfil"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/azul3D"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toTopOf="@+id/GA_buscador"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/menuNotificaciones"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:background="@android:color/transparent"
-        android:padding="8dp"
-        android:src="@drawable/menu_toolbar"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
-
-
-  <ImageButton
-        android:id="@+id/GAMenuLogOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:padding="8dp"
-        android:src="@drawable/info_toolbar"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
-
-
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:gravity="left"
-        android:text="@string/crear_grupo"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
-        app:layout_constraintBottom_toBottomOf="@id/toolbarNotificaciones"
-        app:layout_constraintEnd_toStartOf="@id/GAMenuLogOut"
-        app:layout_constraintStart_toStartOf="parent" />
-  
     <EditText
         android:id="@+id/GA_buscador"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:ems="10"
         android:inputType="text"
-        android:text="Nombre de grupo o persona"
+        android:hint="Nombre de grupo o persona"
+        app:layout_constraintBottom_toTopOf="@+id/listaChats"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarPerfil" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/CA_barraPrincipal"
@@ -195,9 +142,7 @@
         android:layout_height="540dp"
         app:layout_constraintBottom_toTopOf="@+id/CA_barraPrincipal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GA_buscador"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/GA_buscador" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
