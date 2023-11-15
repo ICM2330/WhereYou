@@ -20,18 +20,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(baseContext, LoginActivity::class.java))
         }, 3000)
     }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val clicked = item.itemId
-        if(clicked == R.id.menuLogOut){
-            //auth.signOut()
-            val i = Intent(this, MainActivity::class.java)
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(i)
-        }
-        return super.onOptionsItemSelected(item)
-    }
+
 }

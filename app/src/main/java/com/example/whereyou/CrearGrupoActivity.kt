@@ -6,6 +6,8 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -26,7 +28,20 @@ class CrearGrupoActivity : AppCompatActivity() {
             updateUI(it)
         })
     val projection = arrayOf(ContactsContract.Profile._ID, ContactsContract.Profile.DISPLAY_NAME_PRIMARY)
-    
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val clicked = item.itemId
+        if(clicked == R.id.menuLogOut){
+
+            val i = Intent(this, MainActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(i)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,15 +58,6 @@ class CrearGrupoActivity : AppCompatActivity() {
             getSimplePermission.launch(android.Manifest.permission.READ_CONTACTS)
         }else {
             val density = resources.displayMetrics.density
-            /*
-                    <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="4dp"
-            app:srcCompat="@drawable/usuario_perfil_logo" />
-             */
 
             binding.GAGrupos.setOnClickListener {
                 startActivity(Intent(baseContext,GruposActivity::class.java))
@@ -72,11 +78,7 @@ class CrearGrupoActivity : AppCompatActivity() {
             binding.GAPerfil.setOnClickListener {
                 startActivity(Intent(baseContext,PerfilActivity::class.java))
             }
-            binding.GAMenuLogOut.setOnClickListener {
-                val i = Intent(this, LoginActivity::class.java)
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(i)
-            }
+
             updateUI(true)
             binding.listaContactos.setOnItemClickListener{parent, view, position, id ->
                 val imageView = ImageView(this)
@@ -84,7 +86,7 @@ class CrearGrupoActivity : AppCompatActivity() {
                 imageView.layoutParams = LinearLayout.LayoutParams(
                     (40 * density + 0.5f).toInt(),LinearLayout.LayoutParams.MATCH_PARENT
                 )
-                binding.linearL.addView(imageView)
+                binding.listaContactos.addView(imageView)
             }
         }
     }
@@ -94,11 +96,6 @@ class CrearGrupoActivity : AppCompatActivity() {
             //granted
             val cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, projection, null, null, null)
             adapter.changeCursor(cursor)
-        }
-        binding.GAMenuLogOut.setOnClickListener {
-            val i = Intent(this, LoginActivity::class.java)
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(i)
         }
     }
 }

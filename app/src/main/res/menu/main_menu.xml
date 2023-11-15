@@ -6,5 +6,6 @@
         android:icon="@drawable/baseline_logout_24"
         android:title="menulogout"
         app:showAsAction="ifRoom"
+        app:popupTheme="@style/MyMenuItemText"
     />
 </menu>

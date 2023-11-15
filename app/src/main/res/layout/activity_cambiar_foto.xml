@@ -7,69 +7,18 @@
     tools:context=".ChatsActivity">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarPerfil"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/azul3D"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/menuNotificaciones"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:background="@android:color/transparent"
-        android:padding="8dp"
-        android:src="@drawable/menu_toolbar"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
-
-    <ImageButton
-        android:id="@+id/infoNotificaciones"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:padding="8dp"
-        android:src="@drawable/info_toolbar"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
-
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center"
-        android:text="Editar foto de Perfil"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
-        app:layout_constraintEnd_toStartOf="@id/infoNotificaciones"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/menuNotificaciones"
-        app:layout_constraintTop_toTopOf="@id/toolbarPerfil" />
-
     <ImageView
         android:id="@+id/image"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/galleryButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarPerfil"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/usuario_perfil_logo" />
 
     <Button
