@@ -30,7 +30,6 @@ class MagneticFieldSensorService (context: Context){
                     else{
                         adjustedAzimuth = ((azimuth + 180) % 180).toDouble()
                     }
-                    Log.i("MF", "Grados: $adjustedAzimuth")
                     // Devuelve la rotación en el eje Z encontrada
                     listener(adjustedAzimuth.toFloat())
                 }

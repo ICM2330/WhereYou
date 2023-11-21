@@ -1,13 +1,16 @@
 package com.example.whereyou
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.whereyou.databinding.ActivityLoginBinding
+import com.parse.LogInCallback
 import com.parse.ParseObject
 import com.parse.ParseQuery
+import com.parse.ParseUser
 
 
 class LoginActivity : AppCompatActivity() {
@@ -31,30 +34,27 @@ class LoginActivity : AppCompatActivity() {
 
     
     fun validateUser(user: String, pass: String){
-        var correcto = true
-        val query: ParseQuery<ParseObject> = ParseQuery.getQuery("LoginUser")
-        Log.i("Query", query.toString())
-        query.findInBackground { objects, _ ->
-            if (objects != null) {
-                for (row in objects) {
-                    val name = row["username"] as String?
-                    val password = row["password"] as String?
-                    if(name.equals(user)&&password.equals(pass)){
-                        startActivity(Intent(baseContext, HomeActivity::class.java))
-                        correcto = true
-                        break;
-                    } else{
-                        correcto = false
-                    }
-                }
-                if(correcto == false){
-                    binding.info.text = "Usuario o contraseña incorrectos"
-                }
+        ParseUser.logInInBackground(user, pass, LogInCallback { user, e ->
+            if(user!=null){
+                startActivity(Intent(baseContext, HomeActivity::class.java))
+                saveSession(user)
+                finish()
+            }else{
+                Log.e("Usuario inexistente", e.message!!)
+                binding.info.text = "Usuario o contraseña incorrectos"
             }
-        }
+        })
     }
+    private fun saveSession(user: ParseUser){
 
-    fun validateForm(): Boolean {
+        //Guarda sesión local
+        val sharedPreferences = getSharedPreferences("mi_app_pref", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("userId", user.objectId)
+        editor.putString("username", user.username)
+        editor.apply()
+    }
+    private fun validateForm(): Boolean {
         if(binding.username.text.toString()==""|| binding.password.text.toString()==""){
             Toast.makeText(baseContext, "Complete los campos necesarios", Toast.LENGTH_LONG).show()
         }else{
