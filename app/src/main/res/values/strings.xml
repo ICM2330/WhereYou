@@ -7,4 +7,14 @@
     <string name="grupos">Grupos</string>
     <string name="chat_del_grupo">Chat del grupo</string>
     <string name="crear_grupo">Crear Grupo</string>
+    <string name="correo_electronico">Correo electronico</string>
+    <string name="registrarme">Registrarme</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="nombre_de_usuario">Nombre de usuario</string>
+    <string name="numero_telefonico">Numero telefonico</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="actualizar_informaci_n">Actualizar información</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
+    <string name="miembro_desde">Miembro desde:</string>
 </resources>

@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|top|left"
         android:text="ESTADO: Quieto"
-        android:textColor="@color/azul07"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:translationY="110dp" />
 
