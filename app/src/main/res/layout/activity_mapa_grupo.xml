@@ -49,111 +49,16 @@
         app:layout_constraintTop_toTopOf="@id/toolbarNotificaciones" />
 
 
-    <LinearLayout
-        android:id="@+id/peopleMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+    <ListView
+        android:id="@+id/listGroup"
+        android:layout_width="412dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="512dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/bottomMenu"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapaViewGrupo"
-        tools:ignore="NotSibling">
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/imagenPersona1"
-                android:layout_width="100dp"
-                android:layout_height="90dp"
-                android:layout_gravity="center"
-                android:scaleType="fitCenter"
-                android:src="@drawable/baseline_person_24"
-                />
-            <TextView
-                android:id="@+id/nomPersona1"
-                android:layout_width="100dp"
-                android:gravity="center"
-                android:layout_height="wrap_content"
-                android:text="Persona" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/imagenPersona2"
-                android:layout_width="100dp"
-                android:layout_height="90dp"
-                android:layout_gravity="center"
-                android:scaleType="fitCenter"
-                android:src="@drawable/baseline_person_24" />
-            <TextView
-                android:id="@+id/nomPersona2"
-                android:layout_width="100dp"
-                android:gravity="center"
-                android:layout_height="wrap_content"
-                android:text="Persona" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/imagenPersona3"
-                android:layout_width="100dp"
-                android:layout_height="90dp"
-                android:layout_gravity="center"
-                android:scaleType="fitCenter"
-                android:src="@drawable/baseline_person_24" />
-            <TextView
-                android:id="@+id/nomPersona3"
-                android:layout_width="100dp"
-                android:gravity="center"
-                android:layout_height="wrap_content"
-                android:text="Persona" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/imagenPersona4"
-                android:layout_width="100dp"
-                android:layout_height="90dp"
-                android:layout_gravity="center"
-                android:scaleType="fitCenter"
-                android:src="@drawable/baseline_person_24" />
-            <TextView
-                android:id="@+id/nomPersona4"
-                android:layout_width="100dp"
-                android:gravity="center"
-                android:layout_height="wrap_content"
-                android:text="Persona" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/toolbarNotificaciones" />
 
     <LinearLayout
         android:id="@+id/bottomMenu"
@@ -282,18 +187,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarNotificaciones">
 
-
-
-        <ImageView
-            android:id="@+id/mapaViewGrupo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/mapagps"
-            android:scaleType="fitXY"
-            app:layout_constraintBottom_toTopOf="@+id/peopleMenu"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/topMenu" />
+        <org.osmdroid.views.MapView
+            android:id="@+id/mapa"
+            android:layout_width="411dp"
+            android:layout_height="511dp"
+            android:layout_gravity="center_horizontal|center_vertical">
+        </org.osmdroid.views.MapView>
 
         <LinearLayout
             android:layout_width="match_parent"
