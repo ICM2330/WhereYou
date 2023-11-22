@@ -74,6 +74,10 @@
             </intent-filter>
         </receiver>
 
+        <service
+            android:name=".services.NotificationService"
+            android:enabled="true" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.whereyou.fileprovider"

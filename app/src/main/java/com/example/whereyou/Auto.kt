@@ -12,7 +12,7 @@ import com.example.whereyou.services.NotificationService
 
 class Auto : BroadcastReceiver(){
     override fun onReceive(context: Context, arg: Intent) {
-        if (arg.action === Intent.ACTION_BOOT_COMPLETED) {
+        /*if (arg.action === Intent.ACTION_BOOT_COMPLETED) {
             val intent = Intent(context, NotificationService::class.java)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 context.startForegroundService(intent)
@@ -21,6 +21,6 @@ class Auto : BroadcastReceiver(){
             }
             Log.i("Nico", "started")
         }
-        Log.i("Nico", "Not started")
+        Log.i("Nico", "Not started")*/
     }
 }
