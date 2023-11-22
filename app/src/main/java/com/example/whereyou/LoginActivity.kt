@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.whereyou.databinding.ActivityLoginBinding
+import com.example.whereyou.services.NotificationService
 import com.parse.LogInCallback
 import com.parse.ParseObject
 import com.parse.ParseQuery
@@ -35,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
     
     fun validateUser(user: String, pass: String){
         ParseUser.logInInBackground(user, pass, LogInCallback { user, e ->
-            if(user!=null){
+            if(user!=null) {
                 startActivity(Intent(baseContext, HomeActivity::class.java))
                 saveSession(user)
                 finish()

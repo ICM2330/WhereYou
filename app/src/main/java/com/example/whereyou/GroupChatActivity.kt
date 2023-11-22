@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ListView
@@ -12,6 +13,10 @@ import com.example.whereyou.Adaptadores.MessageAdapter
 import com.example.whereyou.databinding.ActivityGroupChatBinding
 import com.example.whereyou.datos.Message
 import com.google.firebase.auth.FirebaseAuth
+import com.parse.ParseObject
+import com.parse.ParseQuery
+import com.parse.livequery.ParseLiveQueryClient
+import com.parse.livequery.SubscriptionHandling
 
 class GroupChatActivity : AppCompatActivity() {
     private val messageList = ArrayList<Message>()
@@ -86,8 +91,16 @@ class GroupChatActivity : AppCompatActivity() {
             startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
 
+        var parseLiveQueryClient = ParseLiveQueryClient.Factory.getClient()
 
-
+        val query = ParseQuery.getQuery<ParseObject>("Message")
+        query.whereContains("createdAt", "2023")
+        val subscriptionHandling = parseLiveQueryClient.subscribe(query)
+        subscriptionHandling.handleEvents { query, event, obj ->
+            if (event == SubscriptionHandling.Event.CREATE) {
+                listView.adapter = messageAdapter
+            }
+        }
     }
 
     fun obtenerMensajes(){
@@ -103,5 +116,6 @@ class GroupChatActivity : AppCompatActivity() {
             messageAdapter.notifyDataSetChanged()
         }
     }
+
 }
 
