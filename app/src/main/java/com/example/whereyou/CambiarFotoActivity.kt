@@ -107,17 +107,15 @@ class CambiarFotoActivity : AppCompatActivity() {
             uri,
             imageName,
             { imageUrl ->
-            Log.i("Imagen", "Se va a poner en el user con uri ${uri.toString()}")
             if (imageUrl != null) {
                 currentUser.put("profilePic", imageUrl)
-                Log.i("Imagen", "Se ha puesto en el user con uri $uri")
+                currentUser.saveInBackground()
                 finish()
             } else {
                 // Manejar el caso de imageUrl nulo
-                Log.e("Imagen", "La URL de la imagen es nula")
             }
         }, { exception ->
-            Log.e("Imagen", "Error durante la carga de imagen: $exception")
+
             Toast.makeText(
                 this,
                 "No se ha podido guardar la foto de perfil",
