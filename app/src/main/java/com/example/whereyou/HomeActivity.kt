@@ -25,6 +25,7 @@ import androidx.core.app.ActivityCompat
 import com.example.whereyou.model.MyLocation
 import com.example.whereyou.services.AccelerometerSensorService
 import com.example.whereyou.services.MagneticFieldSensorService
+import com.example.whereyou.services.NotificationService
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
@@ -63,6 +64,8 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val newIntentService = Intent(this, NotificationService::class.java)
+        startService(newIntentService)
         locationService = LocationService(this, this)
         lightSensorService = LightSensorService(this)
         map= binding.mapa

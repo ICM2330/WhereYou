@@ -90,10 +90,10 @@ class NotificationService : Service() {
         query.whereContains("createdAt", "2023")
         val subscriptionHandling = parseLiveQueryClient.subscribe(query)
         subscriptionHandling.handleEvents { query, event, obj ->
-            //if (event == SubscriptionHandling.Event.CREATE) {
+            if (event == SubscriptionHandling.Event.CREATE) {
                 notify(buildNotification("Mensaje", "El usuario ${obj?.getString("owner")} ha enviado un mensaje",
                     R.drawable.baseline_notifications_24, GroupChatActivity::class.java, obj))
-            //}
+            }
         }
         return START_STICKY
     }
