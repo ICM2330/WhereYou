@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.whereyou.Adaptadores.MessageAdapter
 import com.example.whereyou.databinding.ActivityGroupChatBinding
 import com.example.whereyou.datos.Message
+import com.example.whereyou.services.MensajeriaService
 import com.google.firebase.auth.FirebaseAuth
 import com.parse.ParseObject
 import com.parse.ParseQuery
@@ -50,6 +51,8 @@ class GroupChatActivity : AppCompatActivity() {
         messageAdapter = MessageAdapter(this, messageList)
         listView.adapter = messageAdapter
 
+        val mensajeriaService = MensajeriaService()
+
         binding.enviarMensaje.setOnClickListener {
             if(prueba){ //Codigo de mensaje enviado
                 val messageText = binding.GABuscador.text.toString().trim()
@@ -67,6 +70,12 @@ class GroupChatActivity : AppCompatActivity() {
             }
 
         }
+        binding.enviarMensaje.setOnClickListener {
+            val message= binding.GABuscador.text.toString()
+            mensajeriaService.guardarMensaje("10001", message)
+        }
+
+
 
         binding.HAGrupos.setOnClickListener {
             var intent = Intent(baseContext, GruposActivity::class.java)

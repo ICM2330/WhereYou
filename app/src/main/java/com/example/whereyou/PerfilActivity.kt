@@ -10,9 +10,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.whereyou.databinding.ActivityPerfilBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.parse.ParseUser
+import com.bumptech.glide.Glide
+
 
 class PerfilActivity : AppCompatActivity() {
     private lateinit var binding : ActivityPerfilBinding
+    val currentUser = ParseUser.getCurrentUser()
+    val profilePicUrl = currentUser.getString("profilePic")
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
@@ -25,11 +30,14 @@ class PerfilActivity : AppCompatActivity() {
             startActivity(i)
         }
         return super.onOptionsItemSelected(item)
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPerfilBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         actualizarPantalla()
 
@@ -82,6 +90,12 @@ class PerfilActivity : AppCompatActivity() {
             binding.profile.text="@"+user.username
             binding.correoElectronico.text=user.email
             binding.fechaRegistro.text = "Miembro desde: "+user.createdAt
+            val profilePicUrl = currentUser.getString("profilePic")
+            if (profilePicUrl != null && profilePicUrl.isNotBlank()) {
+                Glide.with(this)
+                    .load(profilePicUrl)
+                    .into(binding.foto)
+            }
         }
     }
 
