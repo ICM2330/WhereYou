@@ -10,6 +10,8 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -62,6 +64,19 @@
         <activity
             android:name=".GruposActivity"
             android:exported="false" />
+
+        <receiver
+            android:name=".Auto"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".services.NotificationService"
+            android:enabled="true" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
