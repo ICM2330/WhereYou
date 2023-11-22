@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.whereyou.GroupChatActivity
+import com.example.whereyou.HomeActivity
 import com.example.whereyou.R
 import com.parse.ParseObject
 import com.parse.ParseQuery
@@ -85,11 +86,20 @@ class NotificationService : Service() {
 
         Log.i("Nicolas", "Entre a start")
 
+        val query1 = ParseQuery.getQuery<ParseObject>("_User")
+        query1.whereContains("createdAt", "2023")
+        val subscriptionHandling1 = parseLiveQueryClient.subscribe(query1)
+        subscriptionHandling1.handleEvents { query, event, obj ->
+            if (event == SubscriptionHandling.Event.CREATE) {
+                notify(buildNotification("Registro nuevo", "El usuario ${obj?.getString("username")} se ha registrado en WhereYou",
+                    R.drawable.baseline_notifications_24, HomeActivity::class.java, obj))
+            }
+        }
 
-        val query = ParseQuery.getQuery<ParseObject>("Message")
-        query.whereContains("createdAt", "2023")
-        val subscriptionHandling = parseLiveQueryClient.subscribe(query)
-        subscriptionHandling.handleEvents { query, event, obj ->
+        val query2 = ParseQuery.getQuery<ParseObject>("Message")
+        query2.whereContains("createdAt", "2023")
+        val subscriptionHandling2 = parseLiveQueryClient.subscribe(query2)
+        subscriptionHandling2.handleEvents { query, event, obj ->
             if (event == SubscriptionHandling.Event.CREATE) {
                 notify(buildNotification("Mensaje", "El usuario ${obj?.getString("owner")} ha enviado un mensaje",
                     R.drawable.baseline_notifications_24, GroupChatActivity::class.java, obj))

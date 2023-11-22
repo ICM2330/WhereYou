@@ -11,6 +11,7 @@ import com.example.whereyou.databinding.ActivityPerfilBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.parse.ParseUser
 import com.bumptech.glide.Glide
+import com.example.whereyou.services.NotificationService
 
 
 class PerfilActivity : AppCompatActivity() {
@@ -49,6 +50,8 @@ class PerfilActivity : AppCompatActivity() {
         binding.logout.setOnClickListener{
             cerrarSesion()
             val i = Intent(this, LoginActivity::class.java)
+            val serviceIntent = Intent(this, NotificationService::class.java)
+            stopService(serviceIntent)
             i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(i)
             finish()
