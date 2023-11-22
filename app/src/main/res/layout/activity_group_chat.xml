@@ -153,7 +153,7 @@
             app:srcCompat="@drawable/baseline_attach_file_24" />
 
         <ImageButton
-            android:id="@+id/imageButton7"
+            android:id="@+id/enviarMensaje"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"

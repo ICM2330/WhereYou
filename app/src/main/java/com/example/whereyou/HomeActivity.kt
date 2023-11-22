@@ -243,11 +243,12 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
         updateUI(location)
     }
 
-    private fun changeSpeedStatus(speed: Float){
-        if(speed <= 10){
+
+    private fun changeSpeedStatus(speed: Float){ //Cambiarlo a tomar la velocidad y colocarla en la base de datos
+        if(speed <= 0.1){
             binding.speedStatus.text = "ESTADO: Quieto"
         }
-        if(speed > 10 && speed <= 14.7){
+        if(speed > 0.1 && speed <= 14.7){
             binding.speedStatus.text = "ESTADO: Caminando"
         }
         if(speed > 14.7 && speed <= 24.9){
