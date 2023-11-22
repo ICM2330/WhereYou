@@ -49,14 +49,14 @@ class GroupChatActivity : AppCompatActivity() {
             if(prueba){ //Codigo de mensaje enviado
                 val messageText = binding.GABuscador.text.toString().trim()
                 val messageUser = "Jaime"
-                sendMessage(messageText, messageUser, true)
+                mostrarMensaje(messageText, messageUser, true)
                 listView.smoothScrollToPosition(messageList.size - 1)
                 binding.GABuscador.text.clear()
                 prueba = false
             }else{ //Codigo de mensaje recibido
                 val messageText = binding.GABuscador.text.toString().trim()
                 val messageUser = "Pepe"
-                sendMessage(messageText, messageUser, false)
+                mostrarMensaje(messageText, messageUser, false)
                 binding.GABuscador.text.clear()
                 prueba = true
             }
@@ -90,7 +90,13 @@ class GroupChatActivity : AppCompatActivity() {
 
     }
 
-    fun sendMessage(contenido: String, usuario: String, enviadoPorUsuario: Boolean){
+    fun obtenerMensajes(){
+        /*for(i in mensajes){
+
+        }*/
+    }
+
+    fun mostrarMensaje(contenido: String, usuario: String, enviadoPorUsuario: Boolean){
         if(contenido.isNotEmpty() && contenido.isNotBlank() && usuario.isNotEmpty() && usuario.isNotBlank()){
             val message = Message(contenido, usuario,enviadoPorUsuario)
             messageList.add(message)

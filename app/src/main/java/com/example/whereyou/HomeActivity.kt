@@ -30,6 +30,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.LocationSettingsResponse
 import com.google.android.gms.location.SettingsClient
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.tasks.Task
 import com.parse.ParseUser
 import org.osmdroid.util.GeoPoint
@@ -182,13 +183,16 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
             return
         } else {
             val distancia = mapRenderingService.currentLocation.distance(GeoPoint(location.latitude, location.longitude))
+            val ubicacion = mapRenderingService.findAddress(LatLng(location.latitude, location.longitude))
             Log.i("distancia", "la distancia es: $distancia eso")
             mapRenderingService.currentLocation.geoPoint= GeoPoint(location.latitude,location.longitude)
             mapRenderingService.addMarker(mapRenderingService.currentLocation.geoPoint, typeMarker = 'A')
+            mapRenderingService.currentLocation.fecha=Date(System.currentTimeMillis())
+
             if(distancia>=30){
-                mapRenderingService.currentLocation.fecha=Date(System.currentTimeMillis())
                 mapRenderingService.center(mapRenderingService.currentLocation.geoPoint)
             }
+            binding.HAUbicacion.text = ubicacion
         }
     }
     @Override
@@ -245,20 +249,25 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
 
 
     private fun changeSpeedStatus(speed: Float){ //Cambiarlo a tomar la velocidad y colocarla en la base de datos
-        if(speed <= 0.1){
+        if(speed <= 10){
             binding.speedStatus.text = "ESTADO: Quieto"
+            binding.speedStatus.setTextColor(getColor(R.color.verde))
         }
-        if(speed > 0.1 && speed <= 14.7){
+        if(speed > 10 && speed <= 14.7){
             binding.speedStatus.text = "ESTADO: Caminando"
+            binding.speedStatus.setTextColor(getColor(R.color.amarilloVerdoso))
         }
         if(speed > 14.7 && speed <= 24.9){
             binding.speedStatus.text = "ESTADO: Trotando"
+            binding.speedStatus.setTextColor(getColor(R.color.amarillo))
         }
         if(speed > 24.9 && speed <= 49){
             binding.speedStatus.text = "ESTADO: Corrieno"
+            binding.speedStatus.setTextColor(getColor(R.color.naranja))
         }
         if(speed > 49){
             binding.speedStatus.text = "ESTADO: En un vehiculo"
+            binding.speedStatus.setTextColor(getColor(R.color.rojo))
         }
     }
 }

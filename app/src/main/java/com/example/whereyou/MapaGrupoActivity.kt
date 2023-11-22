@@ -8,8 +8,6 @@ import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -17,9 +15,9 @@ import androidx.core.app.ActivityCompat
 import android.view.Menu
 import android.view.MenuItem
 import com.example.whereyou.databinding.ActivityMapaGrupoBinding
+import com.example.whereyou.datos.Person
 import com.example.whereyou.model.MyLocation
 import com.example.whereyou.services.LocationService
-import com.example.whereyou.services.MapEventServices
 import com.example.whereyou.services.MapRenderingServices
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationServices
@@ -29,6 +27,7 @@ import com.google.android.gms.location.SettingsClient
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.parse.ParseUser
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import java.util.Date
@@ -70,6 +69,18 @@ class MapaGrupoActivity : AppCompatActivity() , LocationService.LocationUpdateLi
         super.onCreate(savedInstanceState)
         binding = ActivityMapaGrupoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var people = listOf<Person>()
+
+        val intent = this.intent
+
+        if(intent != null){
+            val i = intent.getIntExtra("Grupo", 1)
+            people = obtenerInformacion(i)
+        }
+
+        val adapter = DisplayPerson(this, people)
+        binding.listGroup.adapter = adapter
 
         locationService = LocationService(this, this)
         map= binding.mapa
@@ -137,7 +148,10 @@ class MapaGrupoActivity : AppCompatActivity() , LocationService.LocationUpdateLi
             startActivity(i)
         }
 
+        binding.listGroup.setOnItemClickListener{parent, view, position, id ->
 
+
+        }
     }
 
     private fun updateUI(location: Location){
@@ -158,6 +172,15 @@ class MapaGrupoActivity : AppCompatActivity() , LocationService.LocationUpdateLi
         } else {
             val distancia = mapRenderingService.currentLocation.distance(GeoPoint(location.latitude, location.longitude))
             val ubicacion = mapRenderingService.findAddress(LatLng(location.latitude, location.longitude))
+            var usuario = ParseUser.getCurrentUser()
+            usuario.add("location", mapRenderingService.currentLocation.geoPoint)
+            usuario.saveInBackground {
+                if(it != null){
+                    Log.e("ErrorU","Error al actualizar ubicación")
+                }else{
+                    Log.i("ParseUbicación","Ubicación guardada exitosamente")
+                }
+            }
             Log.i("distancia", "la distancia es: $distancia eso")
             mapRenderingService.currentLocation.geoPoint= GeoPoint(location.latitude,location.longitude)
             mapRenderingService.addMarker(mapRenderingService.currentLocation.geoPoint, typeMarker = 'A')
@@ -206,6 +229,12 @@ class MapaGrupoActivity : AppCompatActivity() , LocationService.LocationUpdateLi
 
     override fun onLocationUpdate(location: Location) {
         updateUI(location)
+    }
+
+    fun obtenerInformacion(grupo: Int): List<Person>{
+        var people = listOf<Person>()
+        //Hallar por la base de datos la informacion de los integrantes del grupo
+        return people
     }
 
     private fun buscaRutas(geo: GeoPoint, speed: Double, nombre: String){

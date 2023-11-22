@@ -63,7 +63,7 @@
         android:text="ESTADO: Quieto"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:translationY="110dp" />
+        android:translationY="90dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -229,7 +229,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center|right|top"
-        android:translationY="110dp"
+        android:translationY="90dp"
         app:srcCompat="@drawable/cardinal_points" />
 
 </FrameLayout>
