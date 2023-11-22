@@ -7,18 +7,22 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.example.whereyou.databinding.ActivityCambiarFotoBinding
+import com.example.whereyou.services.CloudStorageService
+import com.parse.ParseUser
 import java.io.ByteArrayOutputStream
 import java.io.File
 
 
 class CambiarFotoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCambiarFotoBinding
-
+    private var cloudStorageService = CloudStorageService()
+    val currentUser = ParseUser.getCurrentUser()
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
@@ -95,8 +99,14 @@ class CambiarFotoActivity : AppCompatActivity() {
         val imageStream = getContentResolver().openInputStream(uri)
         val bitmap = BitmapFactory.decodeStream(imageStream)
         binding.image.setImageBitmap(bitmap)
-        //val intent = Intent(this, PerfilActivity::class.java)
-        //intent.putExtra("image", bitmap)
-        //startActivity(intent)
+        val imageName =  "${currentUser.username.toString()}.jpg"
+        cloudStorageService.uploadImageToFirebaseStorage(uri, imageName, { imageUrl ->
+            currentUser.put("profilePic", imageUrl)
+            finish()},{ exception ->
+            Toast.makeText(
+                this,
+                "No se ha podido guardar la foto de perfil",
+                Toast.LENGTH_SHORT,).show()
+        } )
     }
 }

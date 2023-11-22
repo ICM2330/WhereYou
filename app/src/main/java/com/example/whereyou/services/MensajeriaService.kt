@@ -19,10 +19,10 @@ class MensajeriaService {
 
     // Guardar mensajes
     fun guardarMensaje(grupoId: String, contenidoDelMensaje: String){
-        val nuevoMensaje = ParseObject("Mensaje")
-        nuevoMensaje.put("grupoId", grupoId)
+        val nuevoMensaje = ParseObject("Message")
+        nuevoMensaje.put("groupID", grupoId)
         nuevoMensaje.put("date", obtenerHoraActual())
-        nuevoMensaje.put("user", currentUser)
+        nuevoMensaje.put("owner", currentUser)
         nuevoMensaje.put("content", contenidoDelMensaje)
 
         nuevoMensaje.saveInBackground { e ->
