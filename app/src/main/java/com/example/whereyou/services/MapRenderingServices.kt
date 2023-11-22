@@ -36,6 +36,7 @@ class MapRenderingServices(private val context: Context, private val map : MapVi
     private var roadManager:RoadManager = OSRMRoadManager(context, "ANDROID")
     private var geocoder: Geocoder
     private var roadOverlay: Polyline? = null
+    private var beforePoint: Marker?= null
 
     init {
         Configuration.getInstance().load(context, androidx.preference.PreferenceManager.getDefaultSharedPreferences(context))
@@ -93,11 +94,91 @@ class MapRenderingServices(private val context: Context, private val map : MapVi
                 removeMarkers()
                 center(geo)
             }
-            'T'->{
+            'l'->{
                 marker.title="Punto Anterior"
                 val icon= ResourcesCompat.getDrawable(context.resources,R.drawable.baseline_location_on_24_black,context.theme)
                 marker.icon=icon
                 markers.add(marker)
+            }
+            'Q'->{
+                if(title!=null){
+                    marker.title = "$title - Quieto"
+                }else{
+                    marker.title="Punto de otra persona - Quieto"
+                }
+                val icon= ResourcesCompat.getDrawable(context.resources,
+                    R.drawable.baseline_location_on_24_quieto, context.theme)
+                marker.icon=icon
+                if(beforePoint != null){
+                    map.overlays.remove(beforePoint)
+                }
+                beforePoint =marker
+                removeMarkers()
+                center(geo)
+            }
+            'c'->{
+                if(title!=null){
+                    marker.title = "$title - Caminando"
+                }else{
+                    marker.title="Punto de otra persona - Caminando"
+                }
+                val icon= ResourcesCompat.getDrawable(context.resources,
+                    R.drawable.baseline_location_on_24_caminando, context.theme)
+                marker.icon=icon
+                if(beforePoint != null){
+                    map.overlays.remove(beforePoint)
+                }
+                beforePoint =marker
+                removeMarkers()
+                center(geo)
+            }
+            'T'->{
+                if(title!=null){
+                    marker.title = "$title - Trotando"
+                }else{
+                    marker.title="Punto de otra persona - Trotando"
+                }
+                val icon= ResourcesCompat.getDrawable(context.resources,
+                    R.drawable.baseline_location_on_24_trotando, context.theme)
+                marker.icon=icon
+                if(beforePoint != null){
+                    map.overlays.remove(beforePoint)
+                }
+                beforePoint =marker
+                removeMarkers()
+                center(geo)
+            }
+            'C'->{
+                if(title!=null){
+                    marker.title = "$title - Corriendo"
+                }else{
+                    marker.title="Punto de otra persona - Corriendo"
+                }
+                val icon= ResourcesCompat.getDrawable(context.resources,
+                    R.drawable.baseline_location_on_24_corriendo, context.theme)
+                marker.icon=icon
+                if(beforePoint != null){
+                    map.overlays.remove(beforePoint)
+                }
+                beforePoint =marker
+                removeMarkers()
+                center(geo)
+            }
+            'V'->{
+                if(title!=null){
+                    marker.title = "$title - En vehiculo"
+                }else{
+                    marker.title="Punto de otra persona - En vehiculo"
+                }
+                val icon= ResourcesCompat.getDrawable(context.resources,
+                    R.drawable.baseline_location_on_24_en_vehiculo, context.theme)
+                marker.icon=icon
+                if(beforePoint != null){
+                    map.overlays.remove(beforePoint)
+                }
+                beforePoint =marker
+                removeMarkers()
+                center(geo)
             }
         }
         marker.position=geo
