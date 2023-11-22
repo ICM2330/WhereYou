@@ -14,6 +14,8 @@ import android.widget.Toast
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import android.view.Menu
+import android.view.MenuItem
 import com.example.whereyou.databinding.ActivityMapaGrupoBinding
 import com.example.whereyou.model.MyLocation
 import com.example.whereyou.services.LocationService
@@ -64,7 +66,6 @@ class MapaGrupoActivity : AppCompatActivity() , LocationService.LocationUpdateLi
         }
         return super.onOptionsItemSelected(item)
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMapaGrupoBinding.inflate(layoutInflater)

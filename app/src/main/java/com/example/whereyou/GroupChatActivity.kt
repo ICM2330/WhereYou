@@ -21,7 +21,6 @@ class GroupChatActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     private var prueba = false
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
@@ -36,7 +35,6 @@ class GroupChatActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGroupChatBinding.inflate(layoutInflater)
@@ -86,12 +84,6 @@ class GroupChatActivity : AppCompatActivity() {
 
         binding.HAPerfil.setOnClickListener {
             startActivity(Intent(baseContext,PerfilActivity::class.java))
-        }
-        binding.GAMenuLogOut.setOnClickListener {
-            auth.signOut()
-            val i = Intent(this, LoginActivity::class.java)
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(i)
         }
 
 

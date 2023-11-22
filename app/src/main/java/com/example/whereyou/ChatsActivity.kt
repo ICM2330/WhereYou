@@ -14,6 +14,20 @@ import com.google.firebase.auth.FirebaseAuth
 class ChatsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChatsBinding
     private lateinit var auth: FirebaseAuth
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val clicked = item.itemId
+        if(clicked == R.id.menuLogOut){
+
+            val i = Intent(this, MainActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(i)
+        }
+        return super.onOptionsItemSelected(item)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityChatsBinding.inflate(layoutInflater)
@@ -53,12 +67,6 @@ class ChatsActivity : AppCompatActivity() {
 
         binding.HAPerfil.setOnClickListener {
             startActivity(Intent(baseContext,PerfilActivity::class.java))
-        }
-        binding.GAMenuLogOut.setOnClickListener {
-            auth.signOut()
-            val i = Intent(this, LoginActivity::class.java)
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(i)
         }
 
     }

@@ -15,6 +15,6 @@ class ParseConnection : Application() {
     }
 
     companion object {
-        const val IP_GCP = "http://34.83.126.117:1337/parse"
+        const val IP_GCP = "http://34.168.219.6:1337/parse"
     }
 }

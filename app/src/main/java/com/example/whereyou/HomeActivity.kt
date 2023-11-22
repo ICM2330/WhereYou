@@ -2,11 +2,16 @@ package com.example.whereyou
 
 import android.content.Intent
 import android.Manifest
+import android.app.Activity
+import android.content.Context
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
+import android.speech.RecognizerIntent
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -26,9 +31,11 @@ import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.LocationSettingsResponse
 import com.google.android.gms.location.SettingsClient
 import com.google.android.gms.tasks.Task
+import com.parse.ParseUser
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import java.util.Date
+import java.util.Locale
 
 class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener {
     private val getSimplePermission= registerForActivityResult(
@@ -42,8 +49,6 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
     private lateinit var map: MapView
     private lateinit var mapRenderingService: MapRenderingServices
     private lateinit var mapEventService: MapEventServices
-
-
 
     private val locationSettings= registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()
     ) {
@@ -109,7 +114,7 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
         }
 
         binding.HAMicrofono.setOnClickListener {
-
+            voiceToText()
         }
 
         binding.HAUbicacion.setOnClickListener {
@@ -141,6 +146,25 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
         }
     }
 
+    private val startActivityForResult = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == Activity.RESULT_OK) {
+            var result = it.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            binding.HABusquedaUbicacion.setText(result!![0])
+        }
+    }
+    private fun voiceToText(){
+        var intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "¿Que dirección deseas buscar?")
+
+        if(intent.resolveActivity(packageManager) !=null){
+            startActivityForResult.launch(intent)
+        }
+
+    }
     private fun updateUI(location: Location){
         if (ActivityCompat.checkSelfPermission(
                 this,
@@ -219,26 +243,22 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
         updateUI(location)
     }
 
+
     private fun changeSpeedStatus(speed: Float){ //Cambiarlo a tomar la velocidad y colocarla en la base de datos
         if(speed <= 0.1){
             binding.speedStatus.text = "ESTADO: Quieto"
-            binding.speedStatus.setTextColor(resources.getColor(R.color.verde))
         }
         if(speed > 0.1 && speed <= 14.7){
             binding.speedStatus.text = "ESTADO: Caminando"
-            binding.speedStatus.setTextColor(resources.getColor(R.color.amarilloVerdoso))
         }
         if(speed > 14.7 && speed <= 24.9){
             binding.speedStatus.text = "ESTADO: Trotando"
-            binding.speedStatus.setTextColor(resources.getColor(R.color.amarillo))
         }
         if(speed > 24.9 && speed <= 49){
             binding.speedStatus.text = "ESTADO: Corrieno"
-            binding.speedStatus.setTextColor(resources.getColor(R.color.naranja))
         }
         if(speed > 49){
             binding.speedStatus.text = "ESTADO: En un vehiculo"
-            binding.speedStatus.setTextColor(resources.getColor(R.color.rojo))
         }
     }
 }

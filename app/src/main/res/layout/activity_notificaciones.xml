@@ -6,49 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".NotificacionesActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarNotificaciones"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/azul3D"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toTopOf="@+id/listaNotificaciones"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <ImageButton
-        android:id="@+id/GAMenuLogOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:padding="8dp"
-        android:src="@drawable/baseline_logout_24"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarNotificaciones"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Perfil"
-        app:layout_constraintTop_toTopOf="@id/toolbarNotificaciones" />
-
-    <TextView
-        android:id="@+id/Perfil"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:gravity="left"
-        android:text="@string/notificaciones"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarNotificaciones"
-        app:layout_constraintEnd_toStartOf="@id/GAMenuLogOut"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toolbarNotificaciones" />
-
-
 
     <ListView
         android:id="@+id/listaNotificaciones"
@@ -57,7 +14,7 @@
         app:layout_constraintBottom_toTopOf="@+id/GA_barraPrincipal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarNotificaciones" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <LinearLayout

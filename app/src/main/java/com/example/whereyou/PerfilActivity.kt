@@ -1,5 +1,6 @@
 package com.example.whereyou
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -8,9 +9,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.whereyou.databinding.ActivityPerfilBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.parse.ParseUser
 
 class PerfilActivity : AppCompatActivity() {
-    private lateinit var auth: FirebaseAuth
     private lateinit var binding : ActivityPerfilBinding
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
@@ -19,7 +20,6 @@ class PerfilActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val clicked = item.itemId
         if(clicked == R.id.menuLogOut){
-            auth.signOut()
             val i = Intent(this, MainActivity::class.java)
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(i)
@@ -31,9 +31,19 @@ class PerfilActivity : AppCompatActivity() {
         binding = ActivityPerfilBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.botonCambiarFoto.setOnClickListener{
+        actualizarPantalla()
+
+        binding.cambiarFoto.setOnClickListener{
             var intent = Intent(baseContext, CambiarFotoActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.logout.setOnClickListener{
+            cerrarSesion()
+            val i = Intent(this, LoginActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(i)
+            finish()
         }
 
         binding.HAChats.setOnClickListener{
@@ -62,13 +72,27 @@ class PerfilActivity : AppCompatActivity() {
         binding.HAPerfil.setOnClickListener {
             startActivity(Intent(baseContext,PerfilActivity::class.java))
         }
+    }
 
-        binding.GAMenuLogOut.setOnClickListener {
-            auth.signOut()
-            val i = Intent(this, LoginActivity::class.java)
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(i)
+    private fun actualizarPantalla() {
+        if(ParseUser.getCurrentUser()!=null){
+            val user = ParseUser.getCurrentUser()
+            val name =  ""+user.get("name")+" "+user.get("lastname")
+            binding.fullname.text=name
+            binding.profile.text="@"+user.username
+            binding.correoElectronico.text=user.email
+            binding.fechaRegistro.text = "Miembro desde: "+user.createdAt
         }
+    }
+
+    private fun cerrarSesion(){
+        //Cierra sesión localmente
+        val sharedPreferences = getSharedPreferences("mi_app_pref", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+
+        ParseUser.logOut() //Cierra sesión en Parse
     }
 
 

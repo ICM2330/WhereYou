@@ -9,8 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:translationY="20dp">
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/HA_opciones"
@@ -23,13 +22,13 @@
         <EditText
             android:id="@+id/HA_busquedaUbicacion"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="56dp"
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:ems="10"
             android:gravity="bottom|center|start"
             android:inputType="text"
-            android:text="Ubicación" />
+            android:hint="Ubicación" />
 
         <ImageButton
             android:id="@+id/HA_borrar"
@@ -48,12 +47,12 @@
             android:src="@drawable/baseline_mic_24" />
 
     </LinearLayout>
+
     <org.osmdroid.views.MapView
         android:id="@+id/mapa"
         android:layout_width="411dp"
-        android:layout_height="511dp"
-        android:layout_gravity="center_horizontal|center_vertical">
-    </org.osmdroid.views.MapView>
+        android:layout_height="554dp"
+        android:layout_gravity="center_horizontal|center_vertical"></org.osmdroid.views.MapView>
 
 
     <TextView
@@ -62,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|top|left"
         android:text="ESTADO: Quieto"
-        android:textColor="@color/azul07"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:translationY="110dp" />
 
@@ -72,7 +71,7 @@
         android:layout_gravity="center"
         android:orientation="horizontal"
         android:rotationY="0"
-        android:backgroundTint="@color/white"
+        android:background="@color/white"
         android:translationY="250dp">
 
         <LinearLayout
