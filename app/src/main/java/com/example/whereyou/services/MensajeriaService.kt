@@ -11,7 +11,6 @@ import java.util.Locale
 class MensajeriaService {
     val currentUser = ParseUser.getCurrentUser()
 
-
     fun obtenerHoraActual(): String {
         val formato = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
         val fecha = Date(System.currentTimeMillis())
@@ -22,23 +21,22 @@ class MensajeriaService {
     fun guardarMensaje(grupoId: String, contenidoDelMensaje: String){
         val nuevoMensaje = ParseObject("Mensaje")
         nuevoMensaje.put("grupoId", grupoId)
-        nuevoMensaje.put("hora", obtenerHoraActual())  // Puedes implementar una función para obtener la hora actual
-        nuevoMensaje.put("usuario", currentUser)
-        nuevoMensaje.put("contenido", contenidoDelMensaje)
+        nuevoMensaje.put("date", obtenerHoraActual())
+        nuevoMensaje.put("user", currentUser)
+        nuevoMensaje.put("content", contenidoDelMensaje)
 
         nuevoMensaje.saveInBackground { e ->
             if (e == null) {
                 // El mensaje se guardó exitosamente
+                // Notificaciones
             } else {
                 // Manejar errores
             }
         }
-
     }
 
 
     // Obtener mensajes
-
     fun obtenerMensajes(grupoActual: String, grupoId: String, completion: (List<Mensaje>) -> Unit) {
         val query = ParseQuery.getQuery<ParseObject>("Mensaje")
         query.whereEqualTo("groupId", grupoId)
