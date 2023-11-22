@@ -39,7 +39,11 @@ class GruposActivity : AppCompatActivity() {
         var adapter = ArrayAdapter<String>(baseContext,android.R.layout.simple_list_item_1,array)
         binding.GAListaGrupos.adapter = adapter
 
-        binding.GAListaGrupos.setOnItemClickListener { adapterView, view, i, l -> startActivity(Intent(baseContext,MapaGrupoActivity::class.java))}
+        binding.GAListaGrupos.setOnItemClickListener { adapterView, view, i, l ->
+            var intent = Intent(baseContext, MapaGrupoActivity::class.java)
+            intent.putExtra("Grupo", 1)
+            startActivity(intent)
+        }
 
         binding.GANuevoContacto.setOnClickListener {
             startActivity(Intent(baseContext,CrearGrupoActivity::class.java))

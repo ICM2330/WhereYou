@@ -37,8 +37,6 @@ class LoginActivity : AppCompatActivity() {
     fun validateUser(user: String, pass: String){
         ParseUser.logInInBackground(user, pass, LogInCallback { user, e ->
             if(user!=null) {
-                val newIntentService = Intent(this, NotificationService::class.java)
-                startService(newIntentService)
                 startActivity(Intent(baseContext, HomeActivity::class.java))
                 saveSession(user)
                 finish()
