@@ -86,8 +86,8 @@
                 android:id="@+id/HA_ubicacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ubicación Actual"
                 android:backgroundTint="@color/white"
+                android:text="Posición Actual"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -95,7 +95,6 @@
                 android:id="@+id/HA_direccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cra. 7 #40-62"
                 android:textSize="16sp" />
         </LinearLayout>
 

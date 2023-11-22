@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -58,7 +59,6 @@ class CambiarFotoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCambiarFotoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.galleryButton.setOnClickListener {
             getContentGallery.launch("image/*")
         }
@@ -99,14 +99,30 @@ class CambiarFotoActivity : AppCompatActivity() {
         val imageStream = getContentResolver().openInputStream(uri)
         val bitmap = BitmapFactory.decodeStream(imageStream)
         binding.image.setImageBitmap(bitmap)
+
         val imageName =  "${currentUser.username.toString()}.jpg"
-        cloudStorageService.uploadImageToFirebaseStorage(uri, imageName, { imageUrl ->
-            currentUser.put("profilePic", imageUrl)
-            finish()},{ exception ->
+        Log.i("Imagen", "El nombre va a ser $imageName")
+
+        cloudStorageService.uploadImageToFirebaseStorage(
+            uri,
+            imageName,
+            { imageUrl ->
+            Log.i("Imagen", "Se va a poner en el user con uri ${uri.toString()}")
+            if (imageUrl != null) {
+                currentUser.put("profilePic", imageUrl)
+                Log.i("Imagen", "Se ha puesto en el user con uri $uri")
+                finish()
+            } else {
+                // Manejar el caso de imageUrl nulo
+                Log.e("Imagen", "La URL de la imagen es nula")
+            }
+        }, { exception ->
+            Log.e("Imagen", "Error durante la carga de imagen: $exception")
             Toast.makeText(
                 this,
                 "No se ha podido guardar la foto de perfil",
-                Toast.LENGTH_SHORT,).show()
-        } )
+                Toast.LENGTH_SHORT
+            ).show()
+        })
     }
 }

@@ -19,7 +19,7 @@ class CloudStorageService {
     ) {
         val storage = FirebaseStorage.getInstance()
         val storageReference = storage.reference
-        val imageRef: StorageReference = storageReference.child("images/$imageName")
+        val imageRef: StorageReference = storageReference.child("$imageName")
 
         val uploadTask: UploadTask = imageRef.putFile(imageUri)
 
