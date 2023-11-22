@@ -8,6 +8,8 @@ import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -46,6 +48,21 @@ class MapaGrupoActivity : AppCompatActivity() , LocationService.LocationUpdateLi
         } else {
             Toast.makeText(this, "La localizacion esta desactivada", Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val clicked = item.itemId
+        if(clicked == R.id.menuLogOut){
+
+            val i = Intent(this, MainActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(i)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
